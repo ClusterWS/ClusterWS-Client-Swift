@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ClusterWS-Client-Swift'
-  s.version          = '0.2.0'
+  s.version          = '0.3.0'
   s.summary          = 'Native iOS client for ClusterWS'
  
   s.description      = 'Native iOS client for ClusterWS. Simple and easy to use sockets & socket stream library with channel communication and asynchronous calls.'
