@@ -8,7 +8,7 @@
 import Foundation
 
 protocol BasicListener {
-    func onConnected();
+    func onConnected()
     func onDisconnected(error: Error?)
 //    func onConnectError(error: Error)
 }
