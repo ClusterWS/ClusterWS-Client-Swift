@@ -1,9 +1,8 @@
 //
 //  Message.swift
-//  ClusterWS-Swift
+//  ClusterWS-Client-Swift
 //
-//  Created by Roman Baitaliuk on 4/10/17.
-//  Copyright © 2017 ByteKit. All rights reserved.
+//  Created by Roman Baitaliuk on 3/10/17.
 //
 
 import Foundation
