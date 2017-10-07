@@ -1143,10 +1143,9 @@ private class InnerWebSocket: Hashable {
                     value = trim(line)
                 } else {
                     key = ""
-                    if let r = line.range(of: ":") {
-                        key = trim(line.substring(to: r.lowerBound))
-//                        print("KEY: \(key), LINE: \(line), r: \(r.lowerBound)")
-                        value = trim(line.substring(from: r.upperBound))
+                    if let r = line.index(of: ":") {
+                        key = trim(String(line[..<r]))
+                        value = trim(String(line[r...]))
                     }
                 }
                 
