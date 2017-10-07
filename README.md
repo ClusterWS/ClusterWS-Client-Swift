@@ -44,10 +44,8 @@ webSocket.connect()
 
 ```swift
 let webSocket = ClusterWS(url: "host", port: portNumber, autoReconnect: true, reconnectionInterval: 5.0, reconnectionAttempts: 10)
-```
 
-```swift
-/**
+/** Options information
 url: '{string} url of the server without http or https',
 port: '{number} port of the server',
 autoReconnect: '{boolean} allow to auto-reconnect to the server on lost connection (default false)',
@@ -117,14 +115,13 @@ func disconnect(closeCode: Int? = nil, reason: String? = nil) { }
 func getState() -> WebSocketReadyState { }
 
 /** WebSocketReadyState states
-/// The connection is not yet open.
-case connecting
-/// The connection is open and ready to communicate.
-case open
-/// The connection is in the process of closing.
-case closing
-/// The connection is closed or couldn't be opened.
-case closed
+case connecting: 'The connection is not yet open'
+
+case open: 'The connection is open and ready to communicate'
+
+case closing: 'The connection is in the process of closing'
+
+case closed: 'The connection is closed or couldn't be opened'
 **/
 ```
 
