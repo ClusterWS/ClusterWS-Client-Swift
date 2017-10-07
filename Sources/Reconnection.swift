@@ -16,7 +16,9 @@ class Reconnection {
     open var mInReconnectionState: Bool!
     open var mReconnectionAttempts: Int!
     open var mReconnectionTimer: Timer?
-    open let mReconnectionInterval: Double!
+    open let mReconnectionInterval: Double! //reconnection interval is in seconds
+    
+    private var currentReconnectionAttempted: Int = 0
     
     //MARK: Open methods within ClsterWS
     
@@ -37,8 +39,8 @@ class Reconnection {
         self.mInReconnectionState = true
         self.mReconnectionTimer = Timer.scheduledTimer(withTimeInterval: self.mReconnectionInterval, repeats: true, block: { (_) in
             if socket.getState() == .closed {
-                self.mReconnectionAttempts = self.mReconnectionAttempts + 1
-                if self.mReconnectionAttempts != 0 && self.mReconnectionAttempts >= self.mReconnectionAttempts {
+                self.currentReconnectionAttempted += 1
+                if self.mReconnectionAttempts != 0 && self.currentReconnectionAttempted >= self.mReconnectionAttempts {
                     self.mReconnectionTimer?.invalidate()
                     self.mAutoReconnect = false
                     self.mInReconnectionState = false

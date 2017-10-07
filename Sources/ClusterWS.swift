@@ -16,7 +16,7 @@ class ClusterWS {
     
     open let mEmitter: Emitter!
     open var mChannels: [Channel]!
-    open var mLost: Int!
+    open var mLost: Int = 0
     open var timer: Timer?
     
     private let mUrl: String!
@@ -27,12 +27,9 @@ class ClusterWS {
     
     //MARK: Initialization
     
-    //reconnectionInterval: is in seconds
-    
     init(url: String, port: Int, autoReconnect: Bool? = nil, reconnectionInterval: Double? = nil, reconnectionAttempts: Int? = nil) {
         self.mUrl = url
         self.mPort = port
-        self.mLost = 0
         self.mChannels = []
         self.mEmitter = Emitter()
         self.mReconnectionHandler = Reconnection(autoReconnect: autoReconnect, reconnectionInterval: reconnectionInterval, reconnectionAttempts: reconnectionAttempts)
