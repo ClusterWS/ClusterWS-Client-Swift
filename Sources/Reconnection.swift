@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Reconnection {
+open class Reconnection {
     
     //MARK: Properties
     
@@ -22,7 +22,7 @@ class Reconnection {
     
     //MARK: Open methods within ClsterWS
     
-    init(autoReconnect: Bool?, reconnectionInterval: Double?, reconnectionAttempts: Int?) {
+    public init(autoReconnect: Bool?, reconnectionInterval: Double?, reconnectionAttempts: Int?) {
         self.mAutoReconnect = autoReconnect != nil ? autoReconnect : false
         self.mReconnectionInterval = reconnectionInterval != nil ? reconnectionInterval : 5.0
         self.mReconnectionAttempts = reconnectionAttempts != nil ? reconnectionAttempts : 0

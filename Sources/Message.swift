@@ -9,14 +9,14 @@ import Foundation
 
 //MARK: Enumeration of message types
 
-enum MessageType: String {
+public enum MessageType: String {
     case publish = "publish"
     case emit = "emit"
     case system = "system"
     case ping = "ping"
 }
 
-class Message {
+open class Message {
     
     //MARK: Primary methods of ClusterWS
     

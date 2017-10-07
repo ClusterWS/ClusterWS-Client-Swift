@@ -8,10 +8,10 @@
 
 import Foundation
 
-class Channel: Equatable {
+open class Channel: Equatable {
     
     //channel object comparisment
-    static func ==(lhs: Channel, rhs: Channel) -> Bool {
+    public static func ==(lhs: Channel, rhs: Channel) -> Bool {
         if lhs.mChannelName == rhs.mChannelName {
             return true
         } else {
@@ -27,7 +27,7 @@ class Channel: Equatable {
     
     //MARK: Initialization
     
-    init(channelName: String, socket: ClusterWS) {
+    public init(channelName: String, socket: ClusterWS) {
         self.mChannelName = channelName
         self.mSocket = socket
         self.subscribe()

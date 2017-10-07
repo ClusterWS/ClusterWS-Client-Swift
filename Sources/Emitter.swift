@@ -9,9 +9,9 @@ import Foundation
 
 //MARK: Callback
 
-typealias CompletionHandler = (Any) -> Void
+public typealias CompletionHandler = (Any) -> Void
 
-class Emitter {
+open class Emitter {
     
     //MARK: Properties
     
@@ -19,7 +19,7 @@ class Emitter {
     
     //MARK: Initialization
     
-    init() {
+    public init() {
         self.mEvents = []
     }
     

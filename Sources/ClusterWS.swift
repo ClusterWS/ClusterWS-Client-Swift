@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ClusterWS {
+open class ClusterWS {
     
     //MARK: Properties
     
@@ -26,7 +26,7 @@ class ClusterWS {
     
     //MARK: Initialization
     
-    init(url: String, port: Int, autoReconnect: Bool? = nil, reconnectionInterval: Double? = nil, reconnectionAttempts: Int? = nil) {
+    public init(url: String, port: Int, autoReconnect: Bool? = nil, reconnectionInterval: Double? = nil, reconnectionAttempts: Int? = nil) {
         self.mUrl = url
         self.mPort = port
         self.mChannels = []
