@@ -24,5 +24,38 @@ pod 'ClusterWS-Client-Swift'
 
 ## Usage
 
+### 1. Import library
+
+When you installed the library, you have to declare it in your swift file:
+
+```swift
+import ClusterWS_Client_Swift
+```
+
 ### 1. Connect to the server
+
+```swift
+let webSocket = ClusterWS(url: "host", port: portNumber)
+webSocket.delegate = self
+webSocket.connect()
+```
+
+**WebSocket can be initialized with more options**
+
+```swift
+let webSocket = ClusterWS(url: "host", port: portNumber, autoReconnect: true, reconnectionInterval: 5.0, reconnectionAttempts: 10)
+```
+
+```swift
+/**
+url: '{string} url of the server without http or https',
+port: '{number} port of the server',
+autoReconnect: '{boolean} allow to auto-reconnect to the server on lost connection (default false)',
+reconnectionInterval: '{number} how often it will try to reconnect in seconds (default 5.0)',
+reconnectionAttempts: '{number} how many attempts, 0 means without limit (default 0)'
+**/
+```
+
+
+
 
