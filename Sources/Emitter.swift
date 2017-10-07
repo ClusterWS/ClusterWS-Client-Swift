@@ -9,13 +9,13 @@ import Foundation
 
 //MARK: Callback
 
-typealias Listener = (Any) -> Void
+typealias CompletionHandler = (Any) -> Void
 
 class Emitter {
     
     //MARK: Properties
     
-    private var mEvents: [(string: String, function: Listener)]!
+    private var mEvents: [(string: String, completion: CompletionHandler)]!
     
     //MARK: Initialization
     
@@ -25,16 +25,16 @@ class Emitter {
     
     //MARK: Public methods
     
-    public func on(event: String, fn: @escaping Listener) {
+    public func on(event: String, completion: @escaping CompletionHandler) {
         if let index = self.mEvents.index(where: { $0.0 == event }) {
             self.mEvents.remove(at: index)
         }
-        mEvents.append((string: event, function: fn))
+        mEvents.append((string: event, completion: completion))
     }
     
     public func emit(event: String, data: Any) {
         if let index = self.mEvents.index(where: { $0.0 == event }) {
-            self.mEvents[index].function(data)
+            self.mEvents[index].completion(data)
         }
     }
     

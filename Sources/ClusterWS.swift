@@ -12,11 +12,13 @@ class ClusterWS {
     
     //MARK: Properties
     
-    private let mOptions: Options!
-    private var mWebSocket: WebSocket!
-    public var delegate: BasicListener?
+    public var delegate: ClusterWSDelegate?
+    
     open let mEmitter: Emitter!
     open var mChannels: [Channel]!
+    
+    private let mOptions: Options!
+    private var mWebSocket: WebSocket!
     
     //MARK: Initialization
     
@@ -56,8 +58,8 @@ class ClusterWS {
         }
     }
     
-    public func on(event: String, fn: @escaping Listener) {
-        self.mEmitter.on(event: event, fn: fn)
+    public func on(event: String, completion: @escaping CompletionHandler) {
+        self.mEmitter.on(event: event, completion: completion)
     }
     
     public func subscribe(channelName: String) -> Channel {

@@ -22,7 +22,7 @@ class Channel: Equatable {
     //MARK: Properties
     
     public let mChannelName: String!
-    private var listener: Listener?
+    private var completion: CompletionHandler?
     private let mSocket: ClusterWS!
     
     //MARK: Initialization
@@ -36,8 +36,8 @@ class Channel: Equatable {
     
     //MARK: Public functions
     
-    public func watch(fn: @escaping Listener) -> Channel {
-        self.listener = fn
+    public func watch(completion: @escaping CompletionHandler) -> Channel {
+        self.completion = completion
         return self
     }
     
@@ -58,8 +58,8 @@ class Channel: Equatable {
     }
     
     open func onMessage(data: Any) {
-        if let fn = self.listener {
-            fn(data)
+        if let completion = self.completion {
+            completion(data)
         }
     }
 }
