@@ -7,6 +7,8 @@
 
 import Foundation
 
+//MARK: BasicListener Delegate
+
 protocol BasicListener: class {
     func onConnect()
     func onDisconnect(code: Int?, reason: String?)

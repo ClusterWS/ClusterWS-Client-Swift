@@ -9,16 +9,30 @@ import Foundation
 import SwiftWebSocket
 
 class ClusterWS {
-    private var mOptions: Options!
+    
+    //MARK: Properties
+    
+    private let mOptions: Options!
     private var mWebSocket: WebSocket!
-    var delegate: BasicListener?
+    public var delegate: BasicListener?
+    open let mEmitter: Emitter!
+    open var mChannels: [Channel]!
+    
+    //MARK: Initialization
     
     init(url: String, port: Int, autoReconnect: Bool? = nil, reconnectionInterval: Int? = nil, reconnectionAttempts: Int? = nil) {
         self.mOptions = Options(url: url, port: port, autoReconnect: autoReconnect, reconnectionInterval: reconnectionInterval, reconnectionAttempts: reconnectionAttempts)
+        self.mEmitter = Emitter()
+        self.mChannels = []
     }
     
+    //MARK: Public methods
+    
     public func connect() {
-        self.mWebSocket = WebSocket(url: URL(string: "ws://\(self.mOptions.getUrl()):\(self.mOptions.getPort())/")!)
+        guard let url = self.mOptions.mUrl, let port = self.mOptions.mPort else {
+            fatalError("ClusterWS initialization is missing, try to initialize the class first")
+        }
+        self.mWebSocket = WebSocket(url: URL(string: "ws://\(url):\(port)/")!)
         self.mWebSocket.event.open = {
             print("opened")
             self.delegate?.onConnect()
@@ -33,21 +47,44 @@ class ClusterWS {
         }
         self.mWebSocket.event.message = { message in
             if let text = message as? String {
-                print(text)
                 if text == "#0" {
                     self.send(event: "#1", data: nil, type: .ping)
+                } else {
+                    Message.messageDecode(socket: self, message: text)
                 }
             }
         }
     }
     
-    public func send(event: String, data: Any? = nil, type: MessageType? = nil) {
-        if type == nil {
-            self.mWebSocket.send(Message.messageEncode(event: event, data: data, type: .emit))
-            print(Message.messageEncode(event: event, data: data, type: .emit))
-        } else {
-            self.mWebSocket.send(Message.messageEncode(event: event, data: data, type: type!))
-            print(Message.messageEncode(event: event, data: data, type: type!))
+    public func on(event: String, fn: @escaping Listener) {
+        self.mEmitter.on(event: event, fn: fn)
+    }
+    
+    public func subscribe(channelName: String) -> Channel {
+        var channel: Channel?
+        _ = self.mChannels.filter { $0.mChannelName == channelName }.map { channel == $0 }
+        if channel == nil {
+            channel = Channel(channelName: channelName, socket: self)
+            self.mChannels.append(channel!)
         }
+        return channel!
+    }
+    
+    public func disconnect() {
+        self.mWebSocket.close()
+    }
+    
+    public func getState() -> WebSocketReadyState {
+        return self.mWebSocket.readyState
+    }
+    
+    public func send(event: String, data: Any? = nil) {
+        self.send(event: event, data: data, type: .emit)
+    }
+    
+    //MARK: Open methods within the ClusterWS module
+    
+    open func send(event: String, data: Any? = nil, type: MessageType? = .emit) {
+        self.mWebSocket.send(Message.messageEncode(event: event, data: data, type: type!))
     }
 }

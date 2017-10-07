@@ -7,20 +7,28 @@
 
 import Foundation
 
+//MARK: Callback
+
+typealias Listener = (Any) -> Void
+
 class Emitter {
-    typealias Listener = (Any) -> Void
+    
+    //MARK: Properties
     
     private var mEvents: [(string: String, function: Listener)]!
+    
+    //MARK: Initialization
     
     init() {
         self.mEvents = []
     }
     
+    //MARK: Public methods
+    
     public func on(event: String, fn: @escaping Listener) {
         if let index = self.mEvents.index(where: { $0.0 == event }) {
             self.mEvents.remove(at: index)
         }
-        
         mEvents.append((string: event, function: fn))
     }
     
