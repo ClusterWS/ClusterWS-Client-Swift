@@ -35,7 +35,7 @@ THE SOFTWARE.
 
   s.ios.deployment_target = '11.0'
   s.source_files = 'Sources'
-
-  s.dependency "SwiftWebSocket", :git => "https://github.com/davigr/
+  s.libraries = 'z'
+  #s.dependency "SwiftWebSocket"
  
 end

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftWebSocket
 
 class ClusterWS {
     
