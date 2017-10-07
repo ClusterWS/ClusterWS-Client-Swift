@@ -12,8 +12,8 @@
                 <text font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="14" font-weight="bold" letter-spacing="-0.321176469" fill="#FFFFFF">
                     <tspan x="31.1507647" y="16.25">pod</tspan>
                 </text>
-                <text id="v1.0.1" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="14" font-weight="bold" letter-spacing="-0.321176469" fill="#FFFFFF">
-                    <tspan x="69.6774044" y="16.25">v1.0.1</tspan>
+                <text id="v1.1.0" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="14" font-weight="bold" letter-spacing="-0.321176469" fill="#FFFFFF">
+                    <tspan x="69.6774044" y="16.25">v1.1.0</tspan>
                 </text>
             </g>
         </g>

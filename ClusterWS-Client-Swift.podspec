@@ -34,7 +34,7 @@ THE SOFTWARE.
   s.requires_arc = true
 
   s.ios.deployment_target = '11.0'
-  s.source_files = 'Sources'
+  s.source_files = 'Source'
   s.libraries = 'z'
   #s.dependency "SwiftWebSocket"
  
