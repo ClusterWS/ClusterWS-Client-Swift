@@ -36,6 +36,6 @@ THE SOFTWARE.
   s.ios.deployment_target = '11.0'
   s.source_files = 'Sources'
   s.libraries = 'z'
-  #s.dependency "SwiftWebSocket"
+  #s.dependency "SwiftWebSocket1"
  
 end
