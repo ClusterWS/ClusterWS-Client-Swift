@@ -16,32 +16,47 @@ class ClusterWS {
     
     open let mEmitter: Emitter!
     open var mChannels: [Channel]!
+    open var mLost: Int!
+    open var timer: Timer?
     
-    private let mOptions: Options!
+    private let mUrl: String!
+    private let mPort: Int!
+    
+    private let mReconnectionHandler: Reconnection!
     private var mWebSocket: WebSocket!
     
     //MARK: Initialization
     
-    init(url: String, port: Int, autoReconnect: Bool? = nil, reconnectionInterval: Int? = nil, reconnectionAttempts: Int? = nil) {
-        self.mOptions = Options(url: url, port: port, autoReconnect: autoReconnect, reconnectionInterval: reconnectionInterval, reconnectionAttempts: reconnectionAttempts)
-        self.mEmitter = Emitter()
+    //reconnectionInterval: is in seconds
+    
+    init(url: String, port: Int, autoReconnect: Bool? = nil, reconnectionInterval: Double? = nil, reconnectionAttempts: Int? = nil) {
+        self.mUrl = url
+        self.mPort = port
+        self.mLost = 0
         self.mChannels = []
+        self.mEmitter = Emitter()
+        self.mReconnectionHandler = Reconnection(autoReconnect: autoReconnect, reconnectionInterval: reconnectionInterval, reconnectionAttempts: reconnectionAttempts)
     }
     
     //MARK: Public methods
     
     public func connect() {
-        guard let url = self.mOptions.mUrl, let port = self.mOptions.mPort else {
-            fatalError("ClusterWS initialization is missing, try to initialize the class first")
-        }
-        self.mWebSocket = WebSocket(url: URL(string: "ws://\(url):\(port)/")!)
+        self.mWebSocket = WebSocket(url: URL(string: "ws://\(self.mUrl!):\(self.mPort!)/")!)
         self.mWebSocket.event.open = {
             print("opened")
+            self.mReconnectionHandler.onConnected()
             self.delegate?.onConnect()
         }
         self.mWebSocket.event.close = { code, reason, clean in
             print("close with code: \(code), reason: \(reason)")
+            self.mLost = 0
+            self.timer?.invalidate()
             self.delegate?.onDisconnect(code: code, reason: reason)
+            if self.mReconnectionHandler.mAutoReconnect && code != 1000 {
+                if !self.mReconnectionHandler.mInReconnectionState {
+                    self.mReconnectionHandler.reconnect(socket: self)
+                }
+            }
         }
         self.mWebSocket.event.error = { error in
             print("error \(error)")
@@ -50,6 +65,7 @@ class ClusterWS {
         self.mWebSocket.event.message = { message in
             if let text = message as? String {
                 if text == "#0" {
+                    self.mLost = 0
                     self.send(event: "#1", data: nil, type: .ping)
                 } else {
                     Message.messageDecode(socket: self, message: text)
@@ -72,8 +88,8 @@ class ClusterWS {
         return channel!
     }
     
-    public func disconnect() {
-        self.mWebSocket.close()
+    public func disconnect(closeCode: Int? = nil, reason: String? = nil) {
+        self.mWebSocket.close(closeCode == nil ? 1000 : closeCode!, reason: reason == nil ? "" : reason!)
     }
     
     public func getState() -> WebSocketReadyState {

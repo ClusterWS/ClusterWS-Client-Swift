@@ -7,9 +7,9 @@
 
 import Foundation
 
-//MARK: BasicListener Delegate
+//MARK: ClusterWSDelegate functions
 
-protocol ClusterWSDelegate: class {
+public protocol ClusterWSDelegate: class {
     func onConnect()
     func onDisconnect(code: Int?, reason: String?)
     func onError(error: Error)

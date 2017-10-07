@@ -21,7 +21,7 @@ class Channel: Equatable {
     
     //MARK: Properties
     
-    public let mChannelName: String!
+    open let mChannelName: String!
     private var completion: CompletionHandler?
     private let mSocket: ClusterWS!
     

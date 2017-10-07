@@ -57,7 +57,27 @@ class Message {
         case "e":
             socket.mEmitter.emit(event: String(describing: jsonArray[1]), data: jsonArray[2])
         case "s":
-            break
+            switch String(describing: jsonArray[1]) {
+                case "c":
+                    guard let pingJSON = jsonArray[2] as? [String: Any] else {
+                        fatalError("Unable to cast ping json to dictionary")
+                    }
+                    guard let pingInterval = pingJSON["ping"] as? Double else {
+                        fatalError("Unable to cast ping object to numeric type")
+                    }
+                    socket.timer = Timer.scheduledTimer(withTimeInterval: pingInterval/1000, repeats: true, block: { (timer) in
+                        if socket.mLost < 3 {
+                            socket.mLost += 1
+                        } else {
+                            if socket.getState() != .closed {
+                                socket.disconnect(closeCode: 3001, reason: "No pings")
+                                timer.invalidate()
+                            }
+                        }
+                    })
+                default:
+                    break
+            }
         default:
             break
         }
