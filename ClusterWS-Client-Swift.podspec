@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ClusterWS-Client-Swift'
-  s.version          = '0.3.0'
+  s.version          = '0.4.0'
   s.summary          = 'Native iOS client for ClusterWS'
  
   s.description      = 'Native iOS client for ClusterWS. Simple and easy to use sockets & socket stream library with channel communication and asynchronous calls.'
@@ -36,6 +36,6 @@ THE SOFTWARE.
   s.ios.deployment_target = '11.0'
   s.source_files = 'Sources'
 
-  s.dependency 'SwiftWebSocket'
+  s.dependency "SwiftWebSocket", :git => "https://github.com/davigr/
  
 end
