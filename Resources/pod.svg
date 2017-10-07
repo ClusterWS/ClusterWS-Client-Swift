@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="90px" height="22px" viewBox="0 0 90 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>pod</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ClusterWS" transform="translate(-280.000000, -77.000000)">
+            <g id="pod" transform="translate(257.000000, 77.000000)">
+                <rect id="Rectangle-7" fill="#737274" x="23" y="0" width="90" height="21.5" rx="8"></rect>
+                <path d="M84.2515905,0 L105.003181,0 C109.419702,0 113,3.57442249 113,8.00580645 L113,13.4941936 C113,17.9156784 109.418051,21.5 105.003181,21.5 L84.2515905,21.5 L63.5,21.5 L63.5,0 L84.2515905,0 Z" id="Combined-Shape" fill="#4A90E2"></path>
+                <text font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="14" font-weight="bold" letter-spacing="-0.321176469" fill="#FFFFFF">
+                    <tspan x="31.1507647" y="16.25">pod</tspan>
+                </text>
+                <text id="v1.0.1" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="14" font-weight="bold" letter-spacing="-0.321176469" fill="#FFFFFF">
+                    <tspan x="69.6774044" y="16.25">v1.0.1</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,8 +1,8 @@
 # ClusterWS (Node Cluster WebSocket) Client Swift
 
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/SwiftMoment.svg)](http://cocoadocs.org/docsets/ClusterWS-Client-Swift/)
-[![Platform](https://img.shields.io/cocoapods/p/SwiftMoment.svg?style=flat)](http://cocoadocs.org/docsets/ClusterWS-Client-Swift/)
-[![swiftyness](https://img.shields.io/badge/pure-swift-ff3f26.svg?style=flat)](https://swift.org/)
+[![CocoaPods Compatible](https://github.com/davigr/ClusterWS-Client-Swift/blob/master/Resources/pod.svg)](http://cocoadocs.org/docsets/ClusterWS-Client-Swift/)
+[![Platform](https://github.com/davigr/ClusterWS-Client-Swift/blob/master/Resources/platform.svg)](http://cocoadocs.org/docsets/ClusterWS-Client-Swift/)
+[![swiftyness](https://github.com/davigr/ClusterWS-Client-Swift/blob/master/Resources/swift.svg)](https://swift.org/)
 
 ClusterWS - is a minimal **Swift http & real-time** framework which allows to scale WebSocket ([uWS](https://github.com/uNetworking/uWebSockets) - one of the fastest WebSocket libraries) between node js clusters and utilize all available CPU.
 
