@@ -6,7 +6,7 @@
 
 This is official Swift client for ClusterWS.
 
-ClusterWS - is a minimal Node JS http & real-time framework which allows to scale WebSocket (uWS - one of the fastest WebSocket libraries) between Node JS Clusters and utilize all available CPU.
+[ClusterWS](https://github.com/goriunov/ClusterWS) - is a minimal **Node JS http & real-time** framework which allows to scale WebSocket ([uWS](https://github.com/uNetworking/uWebSockets) - one of the fastest WebSocket libraries) between [Node JS Clusters](https://nodejs.org/api/cluster.html) and utilize all available CPU.
 
 **This library require ClusterWS on the server**
 
