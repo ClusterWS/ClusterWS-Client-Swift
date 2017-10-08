@@ -61,9 +61,8 @@ To listen on event use `'on'` method which is provided by ClusterWS:
 ```swift
 /**
 ClusterWS public function:
-
 func on(event: String, completion: @escaping CompletionHandler) {}
-**/
+*/
 
 webSocket.on(event: "myevent") { (data) in
     print(data)
@@ -118,7 +117,6 @@ func getState() -> WebSocketReadyState { }
 
 /**
 WebSocketReadyState states:
-
 case connecting: 'The connection is not yet open'
 
 case open: 'The connection is open and ready to communicate'
@@ -126,7 +124,7 @@ case open: 'The connection is open and ready to communicate'
 case closing: 'The connection is in the process of closing'
 
 case closed: 'The connection is closed or couldn't be opened'
-**/
+*/
 ```
 
 ## Pub/Sub
