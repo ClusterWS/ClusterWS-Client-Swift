@@ -22,7 +22,7 @@ pod 'ClusterWS-Client-Swift'
 
 ## Usage
 
-### 1. Import library
+### 1. Importing library
 
 When you installed the library, you have to declare it in your swift file:
 
@@ -30,7 +30,7 @@ When you installed the library, you have to declare it in your swift file:
 import ClusterWS_Client_Swift
 ```
 
-### 2. Connect to the server
+### 2. Connecting
 
 ```swift
 let webSocket = ClusterWS(url: "host", port: portNumber)
@@ -46,46 +46,72 @@ let webSocket = ClusterWS(url: "host", port: portNumber, autoReconnect: true, re
 
 ```swift
 /**
-url: '{string} url of the server without http or https',
-port: '{number} port of the server',
-autoReconnect: '{boolean} allow to auto-reconnect to the server on lost connection (default false)',
-reconnectionInterval: '{number} how often it will try to reconnect in seconds (default 5.0)',
-reconnectionAttempts: '{number} how many attempts, 0 means without limit (default 0)'
+    url: '{string} url of the server without http or https',
+    port: '{number} port of the server',
+    autoReconnect: '{boolean} allow to auto-reconnect to the server on lost connection (default false)',
+    reconnectionInterval: '{number} how often it will try to reconnect in seconds (default 5.0)',
+    reconnectionAttempts: '{number} how many attempts, 0 means without limit (default 0)'
 */
 ```
 
-### 3.  Listen on events from the server
+### 3.  Listen on events
 
 To listen on event use `'on'` method which is provided by ClusterWS:
 
 ```swift
 /**
-ClusterWS public function:
-func on(event: String, completion: @escaping CompletionHandler) {}
+    ClusterWS public function:
+    func on(event: String, completion: @escaping CompletionHandler) {}
+*/
+
+/**
+    event name: string - can be any string you wish
+    data: any - is what you send from the client
 */
 
 webSocket.on(event: "myevent") { (data) in
-    print(data)
+    // in here you can write any logic
 }
 ```
 
-*You can listen on any event which you emit from the server, also you can listen on **Reserved events** which are emitted by the server automatically.*
-
-*Data which you get in `CompletionHandler` is what you send with event, you can send `any type of data`.*
-
-***Reserved events**: `'connect'`, `'error'`, `'disconnect'`*
-
-### 4. Emit an event
-
-To emit an event to the server you should use `send` method which is provided by ClusterWS:
+*Also `webSocket` gets **Reserved Events** such as `'connect'`, `'disconnect'` and `'error'`*
 
 ```swift
+webSocket.on('connect') { (data) in
+// in here you can write any logic
+}
+
+/**
+    err: any - display the problem with your weboscket
+*/
+
+webSocket.on('error') { (data) in
+// in here you can write any logic
+}
+
+/**
+    code: number - represent the reason in number
+    reason: string - reason why your socket was disconnected
+*/
+
+webSocket.on('disconnect') { (data) in
+// in here you can write any logic
+}
+```
+
+### 4. Send an event
+
+To send events to the server use `send` method witch is provided by `webSocket`
+
+```swift
+/**
+    event name: string - can be any string you wish (client must listen on this event name)
+    data: any - is what you want to send to the client
+*/
 webSocket.send(event: "myevent", data: data)
 ```
 
-*`'data'` can be any type you want such as `array`, `string`, `object`, `...`*
-
-***Try to avoid emitting reserved events:** `'connect'`, `'error'`, `'disconnect'`, or any events which start with `'#'`*
+*Avoid emitting **Reserved Events** such as `'connect'`, `'connection'`, `'disconnect'` and `'error'`. Also avoid emitting  event and events with `'#'` at the start.*
 
 ### 5. ClusterWSDelegate methods
 
@@ -116,52 +142,57 @@ func disconnect(closeCode: Int? = nil, reason: String? = nil) { }
 func getState() -> WebSocketReadyState { }
 
 /**
-WebSocketReadyState states:
-case connecting: 'The connection is not yet open'
-
-case open: 'The connection is open and ready to communicate'
-
-case closing: 'The connection is in the process of closing'
-
-case closed: 'The connection is closed or couldn't be opened'
+    WebSocketReadyState states:
+    case connecting: 'The connection is not yet open'
+    case open: 'The connection is open and ready to communicate'
+    case closing: 'The connection is in the process of closing'
+    case closed: 'The connection is closed or couldn't be opened'
 */
 ```
 
 ## Pub/Sub
 
-### 1. Subscribe watch and publish to the channels
-
-You can subscribe to `any channels`:
+You can subscribe, watch, unsubscribe and publish to the channels
 
 ```swift
+/**
+    channel name: string - can be any string you wish
+*/
+
 //subscribe to channel
 var channel = webSocket.subscribe(channelName: "channel")
-```
 
-After you subscribe to the `channel` you will be able to get all messages which are published to this `channel` and you will also be able to publish your messages there:
+/**
+    data: any - is what you get when you or some one else publish to the channel
+*/
 
-```swift
 //listen on the data from channel
 channel.watch { (data) in
-    print(data)
+// in here you can write any logic
 }
 
-//publish data to channel
+/**
+    data: any - is what you want to publish to the channel (everyone who is subscribe will get it)
+*/
+
 channel.publish(data: "some data")
-```
 
-Or you can chain everything:
+/**
+    This method is used to unsubscribe from the channel
+*/
 
-```swift
+channel.unsubscribe()
+
+/**
+    Also you can chain everything in one expression
+*/
+
 var channel = webSocket.subscribe(channelName: "channel").watch { (data) in
-    print(data)
+// in here you can write any logic
 }.publish(data: "some data")
 ```
-
-*`'data'` can be any type you want such as `array`, `string`, `object`, `...`*
-
 **To make sure that user is connected to the server before subscribing, do it on `connect` event or on any other events which you emit from the server, otherwise subscription may not work properly**
 
-# Happy codding !!! :sunglasses:
+*Docs is still under development.*
 
-
+## Happy codding !!! :sunglasses:
