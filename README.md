@@ -42,14 +42,16 @@ webSocket.connect()
 
 ```swift
 let webSocket = ClusterWS(url: "host", port: portNumber, autoReconnect: true, reconnectionInterval: 5.0, reconnectionAttempts: 10)
+```
 
-/** Options information
+```swift
+/**
 url: '{string} url of the server without http or https',
 port: '{number} port of the server',
 autoReconnect: '{boolean} allow to auto-reconnect to the server on lost connection (default false)',
 reconnectionInterval: '{number} how often it will try to reconnect in seconds (default 5.0)',
 reconnectionAttempts: '{number} how many attempts, 0 means without limit (default 0)'
-**/
+*/
 ```
 
 ### 3.  Listen on events from the server
@@ -57,7 +59,9 @@ reconnectionAttempts: '{number} how many attempts, 0 means without limit (defaul
 To listen on event use `'on'` method which is provided by ClusterWS:
 
 ```swift
-/** ClusterWS public function
+/**
+ClusterWS public function:
+
 func on(event: String, completion: @escaping CompletionHandler) {}
 **/
 
@@ -112,7 +116,9 @@ func disconnect(closeCode: Int? = nil, reason: String? = nil) { }
 //get current WebSocket state
 func getState() -> WebSocketReadyState { }
 
-/** WebSocketReadyState states
+/**
+WebSocketReadyState states:
+
 case connecting: 'The connection is not yet open'
 
 case open: 'The connection is open and ready to communicate'
