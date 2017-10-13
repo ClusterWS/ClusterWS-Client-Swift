@@ -45,8 +45,6 @@ If you want to set auto reconnection use setReconnection method
 webSocket.setReconnection(autoReconnect: true, reconnectionIntervalMin: 1.0, reconnectionIntervalMax: 5.0, reconnectionAttempts: 0)
 
 /**
-    url: '{string} url of the server without http or https',
-    port: '{number} port of the server',
     autoReconnect: '{boolean} allow to auto-reconnect to the server on lost connection (default false)',
     reconnectionIntervalMin: '{number} how often it will try to reconnect in seconds (default 1.0)',
     reconnectionIntervalMax: '{number} how often it will try to reconnect in seconds (default 5.0)',
