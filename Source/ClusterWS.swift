@@ -21,17 +21,17 @@ open class ClusterWS {
     private let mUrl: String!
     private let mPort: Int!
     
-    private let mReconnectionHandler: Reconnection!
+    private var mReconnectionHandler: Reconnection!
     private var mWebSocket: WebSocket!
     
     //MARK: Initialization
     
-    public init(url: String, port: Int, autoReconnect: Bool? = nil, reconnectionInterval: Double? = nil, reconnectionAttempts: Int? = nil) {
+    public init(url: String, port: Int) {
         self.mUrl = url
         self.mPort = port
         self.mChannels = []
         self.mEmitter = Emitter()
-        self.mReconnectionHandler = Reconnection(autoReconnect: autoReconnect, reconnectionInterval: reconnectionInterval, reconnectionAttempts: reconnectionAttempts)
+        self.mReconnectionHandler = Reconnection(autoReconnect: nil, reconnectionIntervalMin: nil, reconnectionIntervalMax: nil, reconnectionAttempts: nil, socket: self)
     }
     
     //MARK: Public methods
@@ -48,10 +48,11 @@ open class ClusterWS {
             self.mLost = 0
             self.timer?.invalidate()
             self.delegate?.onDisconnect(code: code, reason: reason)
+            if self.mReconnectionHandler.mInReconnectionState {
+                return
+            }
             if self.mReconnectionHandler.mAutoReconnect && code != 1000 {
-                if !self.mReconnectionHandler.mInReconnectionState {
-                    self.mReconnectionHandler.reconnect(socket: self)
-                }
+                self.mReconnectionHandler.reconnect()
             }
         }
         self.mWebSocket.event.error = { error in
@@ -66,6 +67,12 @@ open class ClusterWS {
                 } else {
                     Message.messageDecode(socket: self, message: text)
                 }
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + self.mReconnectionHandler.mReconnectionIntervalMin) {
+            print(self.mWebSocket.readyState)
+            if self.mWebSocket.readyState == .closed {
+                self.mReconnectionHandler.reconnect()
             }
         }
     }
@@ -84,8 +91,20 @@ open class ClusterWS {
         return channel!
     }
     
+    public func getChannels() -> [Channel] {
+        return self.mChannels
+    }
+    
+    public func getChannel(byName name: String) -> Channel? {
+        return self.mChannels.filter { $0.mChannelName == name }.first
+    }
+    
     public func disconnect(closeCode: Int? = nil, reason: String? = nil) {
         self.mWebSocket.close(closeCode == nil ? 1000 : closeCode!, reason: reason == nil ? "" : reason!)
+    }
+    
+    public func setReconnection(autoReconnect: Bool, reconnectionIntervalMin: Double, reconnectionIntervalMax: Double, reconnectionAttempts: Int) {
+        self.mReconnectionHandler = Reconnection(autoReconnect: autoReconnect, reconnectionIntervalMin: reconnectionIntervalMin, reconnectionIntervalMax: reconnectionIntervalMax, reconnectionAttempts: reconnectionAttempts, socket: self)
     }
     
     public func getState() -> WebSocketReadyState {

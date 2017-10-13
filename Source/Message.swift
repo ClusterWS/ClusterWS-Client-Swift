@@ -70,7 +70,7 @@ open class Message {
                             socket.mLost += 1
                         } else {
                             if socket.getState() != .closed {
-                                socket.disconnect(closeCode: 3001, reason: "No pings")
+                                socket.disconnect(closeCode: 4001, reason: "No pings")
                                 timer.invalidate()
                             }
                         }
