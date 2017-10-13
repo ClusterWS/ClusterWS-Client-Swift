@@ -4,7 +4,7 @@
 [![Platform](https://github.com/davigr/ClusterWS-Client-Swift/blob/master/Resources/platform.svg)](http://cocoadocs.org/docsets/ClusterWS-Client-Swift/)
 [![swiftyness](https://github.com/davigr/ClusterWS-Client-Swift/blob/master/Resources/swift.svg)](https://swift.org/)
 
-##Overview
+## Overview
 This is official Swift client for [ClusterWS](https://github.com/ClusterWS/ClusterWS).
 
 [ClusterWS](https://github.com/ClusterWS/ClusterWS) - is a minimal **Node JS http & real-time** framework which allows to scale WebSocket ([uWS](https://github.com/uNetworking/uWebSockets) - one of the fastest WebSocket libraries) between **Workers** in [Node JS Cluster](https://nodejs.org/api/cluster.html) and utilize all available CPU.
@@ -166,6 +166,9 @@ let channels = webSocket.getChannels()
 
 ```
 **To make sure that user is connected to the server before subscribing, do it on `connect` event or on any other events which you emit from the server, otherwise subscription may not work properly**
+
+## See Also
+* [Medium ClusterWS](https://medium.com/clusterws)
 
 *Docs are still under development. If you have found any errors please submit pull request or leave issue*
 
