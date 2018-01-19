@@ -75,6 +75,12 @@ open class Message {
                             }
                         }
                     })
+                    guard let useBinary = pingJSON["binary"] as? Bool else {
+                        debugPrint("Unable to retrieve binary value from the object")
+                        return
+                    }
+                    socket.mUseBinary = useBinary
+                    socket.delegate?.onConnect()
                 default:
                     break
             }

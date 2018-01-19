@@ -33,7 +33,6 @@ open class Channel: Equatable {
         self.subscribe()
     }
     
-    
     //MARK: Public functions
     
     public func watch(completion: @escaping CompletionHandler) -> Channel {
