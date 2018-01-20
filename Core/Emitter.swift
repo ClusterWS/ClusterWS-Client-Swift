@@ -42,7 +42,3 @@ open class Emitter {
         self.mEvents.removeAll()
     }
 }
-
-
-
-

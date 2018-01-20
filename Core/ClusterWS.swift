@@ -86,7 +86,7 @@ open class ClusterWS {
         self.mEmitter.on(event: event, completion: completion)
     }
     
-    public func subscribe(channelName: String) -> Channel {
+    public func subscribe(_ channelName: String) -> Channel {
         var channel: Channel?
         _ = self.mChannels.filter { $0.mChannelName == channelName }.map { channel == $0 }
         if channel == nil {
@@ -100,7 +100,7 @@ open class ClusterWS {
         return self.mChannels
     }
     
-    public func getChannel(byName name: String) -> Channel? {
+    public func getChannel(by name: String) -> Channel? {
         return self.mChannels.filter { $0.mChannelName == name }.first
     }
     

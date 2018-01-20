@@ -40,7 +40,7 @@ open class Reconnection {
         self.mReconnectionAttempts = 0
         
         let channels = self.socket.getChannels()
-        _ = channels.map { socket.subscribe(channelName: $0.mChannelName) }
+        _ = channels.map { socket.subscribe($0.mChannelName) }
     }
     
     open func reconnect() {
@@ -61,5 +61,4 @@ open class Reconnection {
             }
         })
     }
-    
 }
