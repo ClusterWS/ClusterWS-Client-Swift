@@ -19,30 +19,27 @@ open class ClusterWS {
     open var timer: Timer?
     open var mUseBinary: Bool!
     
-    private var mSecure: Bool!
-    private let mUrl: String!
-    private let mPort: Int!
+    private let mUrl: String
     
     private var mReconnectionHandler: Reconnection!
     private var mWebSocket: WebSocket!
     
     //MARK: Initialization
     
-    public init(url: String, port: Int, secure: Bool? = nil) {
+    public init(url: String) {
         self.mUrl = url
-        self.mPort = port
         self.mChannels = []
         self.mEmitter = Emitter()
-        self.mSecure = secure == nil ? false : secure
         self.mReconnectionHandler = Reconnection(autoReconnect: nil, reconnectionIntervalMin: nil, reconnectionIntervalMax: nil, reconnectionAttempts: nil, socket: self)
     }
     
     //MARK: Public methods
     
     public func connect() {
-        let ssl: String = self.mSecure == true ? "wss://" : "ws://"
-        self.mWebSocket = WebSocket(url: URL(string: "\(ssl)\(self.mUrl!):\(self.mPort!)/")!)
-        self.mWebSocket.allowSelfSignedSSL = self.mSecure
+        self.mWebSocket = WebSocket(url: URL(string: self.mUrl)!)
+        if self.mUrl.range(of: "wss://") != nil {
+            self.mWebSocket.allowSelfSignedSSL = true
+        }
         self.mWebSocket.event.open = {
             print("opened")
             self.mReconnectionHandler.onConnected()
