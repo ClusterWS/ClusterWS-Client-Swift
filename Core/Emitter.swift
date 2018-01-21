@@ -7,23 +7,10 @@
 
 import Foundation
 
-//MARK: Callback
-
 public typealias CompletionHandler = (Any) -> Void
 
 open class Emitter {
-    
-    //MARK: Properties
-    
-    private var mEvents: [(string: String, completion: CompletionHandler)]!
-    
-    //MARK: Initialization
-    
-    public init() {
-        self.mEvents = []
-    }
-    
-    //MARK: Public methods
+    private var mEvents: [(string: String, completion: CompletionHandler)] = []
     
     public func on(event: String, completion: @escaping CompletionHandler) {
         if let index = self.mEvents.index(where: { $0.0 == event }) {

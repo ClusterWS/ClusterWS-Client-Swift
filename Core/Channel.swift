@@ -8,9 +8,8 @@
 
 import Foundation
 
+// MARK: Properties & Initialization
 open class Channel: Equatable {
-    
-    //channel object comparisment
     public static func ==(lhs: Channel, rhs: Channel) -> Bool {
         if lhs.mChannelName == rhs.mChannelName {
             return true
@@ -19,22 +18,19 @@ open class Channel: Equatable {
         }
     }
     
-    //MARK: Properties
-    
-    open let mChannelName: String!
+    open let mChannelName: String
     private var completion: CompletionHandler?
-    private let mSocket: ClusterWS!
-    
-    //MARK: Initialization
+    private let mSocket: ClusterWS
     
     public init(channelName: String, socket: ClusterWS) {
         self.mChannelName = channelName
         self.mSocket = socket
         self.subscribe()
     }
-    
-    //MARK: Public functions
-    
+}
+
+//MARK: Public methods
+extension Channel {
     public func watch(completion: @escaping CompletionHandler) -> Channel {
         self.completion = completion
         return self
@@ -46,14 +42,15 @@ open class Channel: Equatable {
     }
     
     public func unsubscribe() {
-        self.mSocket.send(event: "unsubscribe", data: self.mChannelName, type: .system)
+        self.mSocket.send(event: SystemEventType.unsubscribe.rawValue, data: self.mChannelName, type: .system)
         self.mSocket.mChannels = self.mSocket.mChannels.filter { $0 != self }
     }
-    
-    //MARK: ClusterWS internal functions
-    
+}
+
+//MARK: Open methods
+extension Channel {
     open func subscribe() {
-        self.mSocket.send(event: "subscribe", data: self.mChannelName, type: .system)
+        self.mSocket.send(event: SystemEventType.subscribe.rawValue, data: self.mChannelName, type: .system)
     }
     
     open func onMessage(data: Any) {

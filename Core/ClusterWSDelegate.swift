@@ -7,8 +7,9 @@
 
 import Foundation
 
-//MARK: ClusterWSDelegate functions
-
+/**
+     ClusterWS delegate methods
+*/
 public protocol ClusterWSDelegate: class {
     func onConnect()
     func onDisconnect(code: Int?, reason: String?)
