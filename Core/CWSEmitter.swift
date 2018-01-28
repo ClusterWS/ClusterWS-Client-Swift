@@ -9,7 +9,7 @@ import Foundation
 
 public typealias CompletionHandler = (Any) -> Void
 
-open class Emitter {
+open class CWSEmitter {
     private var mEvents: [(string: String, completion: CompletionHandler)] = []
     
     public func on(event: String, completion: @escaping CompletionHandler) {

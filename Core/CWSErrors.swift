@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum ClusterWSErrors: Error, LocalizedError {
+public enum CWSErrors: Error, LocalizedError {
     case invalidURL(String)
     case JSONStringConversionError(String)
     case JSONStringifyError(Any?)
@@ -16,6 +16,7 @@ public enum ClusterWSErrors: Error, LocalizedError {
     case pingJSONCastError(Any)
     case pingIntervalCastError(Any)
     case binaryCastError(Any)
+    case binaryDecodeError(Any)
     public var localizedDescription: String {
         switch self {
         case .invalidURL(let url): return "Invalid URL: \(url)."
@@ -25,6 +26,7 @@ public enum ClusterWSErrors: Error, LocalizedError {
         case .pingJSONCastError(let array): return "Cannot cast array object to JSON with ping values, array object: \(array)."
         case .pingIntervalCastError(let json): return "Cannot cast ping interval as 'Double' from ping JSON, JSON: \(json)."
         case .binaryCastError(let json): return "Cannot cast ping binary as 'Bool' from ping JSON, JSON: \(json)."
+        case .binaryDecodeError(let message): return "Cannot convert binary message to string using UTF8, message: \(message)"
         }
     }
 }

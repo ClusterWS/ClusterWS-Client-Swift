@@ -6,9 +6,9 @@
 </p>
 
 <p align="center">
- <a title="Cocoapod Version" href="https://cocoapods.org/pods/ClusterWS-Client-Swift"><img src="https://github.com/davigr/ClusterWS-Client-Swift/blob/master/Resources/pod-version.svg"></a>
-<a title="Platforms" href="https://github.com/ClusterWS/ClusterWS-Client-Swift"><img src="https://github.com/davigr/ClusterWS-Client-Swift/blob/master/Resources/platform.svg"></a>
-<a title="Swift version" href="https://swift.org/"><img src="https://github.com/davigr/ClusterWS-Client-Swift/blob/master/Resources/swift.svg"></a>
+ <a title="Cocoapod Version" href="https://cocoapods.org/pods/ClusterWS-Client-Swift"><img src="https://img.shields.io/cocoapods/v/ClusterWS-Client-Swift.svg"></a>
+<a title="Platforms" href="https://github.com/ClusterWS/ClusterWS-Client-Swift"><img src="https://img.shields.io/cocoapods/p/ClusterWS-Client-Swift.svg"></a>
+<a title="License" href="https://github.com/ClusterWS/ClusterWS-Client-Swift/blob/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/ClusterWS-Client-Swift.svg"></a>
 </p>
 
 <p align="center">

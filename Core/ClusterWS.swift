@@ -9,36 +9,28 @@ import Foundation
 
 // MARK: Properties & Initialization
 open class ClusterWS {
-    public var delegate: ClusterWSDelegate?
-    
-    open let mEmitter: Emitter
-    open let mPingHandler: PingHandler
-    
-    open var mChannels: [Channel] = []
-    open var mUseBinary: Bool = false
-    
+    public var delegate: CWSDelegate?
+    private let mEmitter: CWSEmitter
+    private let mPingHandler: CWSPing
+    private var mChannels: [CWSChannel] = []
+    private var mUseBinary: Bool = false
     private let mUrl: String
     private var mWebSocket: WebSocket?
-    
-    private var mReconnectionHandler: ReconnectionHandler
-    private let mMessageHandler: MessageHandler
+    private lazy var mReconnection = CWSReconnection(socket: self)
+    private lazy var mParser = CWSParser(socket: self)
     
     public init(url: String) {
         self.mUrl = url
-        self.mEmitter = Emitter()
-        self.mPingHandler = PingHandler()
-        self.mReconnectionHandler = ReconnectionHandler()
-        self.mMessageHandler = MessageHandler()
+        self.mEmitter = CWSEmitter()
+        self.mPingHandler = CWSPing()
     }
 }
 
 // MARK: Public methods
 extension ClusterWS {
     public func connect() {
-        self.mReconnectionHandler.socket = self
-        
         guard let url = URL(string: self.mUrl) else {
-            self.delegate?.onError(error: ClusterWSErrors.invalidURL(self.mUrl))
+            self.delegate?.onError(error: CWSErrors.invalidURL(self.mUrl))
             return
         }
         
@@ -49,17 +41,17 @@ extension ClusterWS {
         }
         
         self.mWebSocket?.event.open = {
-            self.mReconnectionHandler.onConnected()
+            self.mReconnection.onConnected()
         }
         
         self.mWebSocket?.event.close = { code, reason, clean in
-            self.mPingHandler.reset()
+            self.mPingHandler.stop()
             self.delegate?.onDisconnect(code: code, reason: reason)
-            if self.mReconnectionHandler.mReconnectionTimer != nil {
+            if self.mReconnection.isRunning() {
                 return
             }
-            if self.mReconnectionHandler.mAutoReconnect && code != 1000 {
-                self.mReconnectionHandler.reconnect()
+            if self.mReconnection.isAutoReconnectOn() && code != 1000 {
+                self.mReconnection.reconnect()
             }
         }
         
@@ -72,13 +64,17 @@ extension ClusterWS {
             if let text = message as? String {
                 string = text
             } else if let binary = message as? [UInt8] {
-                string = String(bytes: binary, encoding: .utf8)!
+                guard let decodedString = String(bytes: binary, encoding: .utf8) else {
+                    self.delegate?.onError(error: CWSErrors.binaryDecodeError(binary))
+                    return
+                }
+                string = decodedString
             }
             if string == "#0" {
                 self.mPingHandler.resetMissedPing()
                 self.send(event: "#1", data: nil, type: .ping)
             } else {
-                self.mMessageHandler.messageDecode(message: string, socket: self)
+                self.mParser.handleMessage(with: string)
             }
         }
     }
@@ -87,20 +83,20 @@ extension ClusterWS {
         self.mEmitter.on(event: event, completion: completion)
     }
     
-    public func subscribe(_ channelName: String) -> Channel {
+    public func subscribe(_ channelName: String) -> CWSChannel {
         var channel = self.mChannels.filter { $0.mChannelName == channelName }.map { $0 }.first
         if channel == nil {
-            channel = Channel(channelName: channelName, socket: self)
+            channel = CWSChannel(channelName: channelName, socket: self)
             self.mChannels.append(channel!)
         }
         return channel!
     }
     
-    public func getChannels() -> [Channel] {
+    public func getChannels() -> [CWSChannel] {
         return self.mChannels
     }
     
-    public func getChannel(by name: String) -> Channel? {
+    public func getChannel(by name: String) -> CWSChannel? {
         return self.mChannels.filter { $0.mChannelName == name }.first
     }
     
@@ -109,11 +105,7 @@ extension ClusterWS {
     }
     
     public func setReconnection(autoReconnect: Bool, reconnectionIntervalMin: Double, reconnectionIntervalMax: Double, reconnectionAttempts: Int) {
-        self.mReconnectionHandler.socket = self
-        self.mReconnectionHandler.mAutoReconnect = autoReconnect
-        self.mReconnectionHandler.mReconnectionAttempts = reconnectionAttempts
-        self.mReconnectionHandler.mReconnectionIntervalMin = reconnectionIntervalMin
-        self.mReconnectionHandler.mReconnectionIntervalMax = reconnectionIntervalMax
+        self.mReconnection.setReconnection(autoReconnect: autoReconnect, reconnectionIntervalMin: reconnectionIntervalMin, reconnectionIntervalMax: reconnectionIntervalMax, reconnectionAttempts: reconnectionAttempts)
     }
     
     public func getState() -> WebSocketReadyState {
@@ -132,19 +124,35 @@ extension ClusterWS {
 extension ClusterWS {
     open func send(event: String, data: Any? = nil, type: MessageType) {
         if self.mUseBinary {
-            guard let encodedData = self.mMessageHandler.messageEncode(event: event,
+            guard let encodedData = self.mParser.encode(event: event,
                                                                       data: data,
                                                                       type: type)?.data(using: .utf8) else {
-                                                                        self.delegate?.onError(error: ClusterWSErrors.JSONStringifyError(data))
+                                                                        self.delegate?.onError(error: CWSErrors.JSONStringifyError(data))
                                                                         return
             }
             self.mWebSocket?.send(encodedData)
         } else {
-            guard let anyData = self.mMessageHandler.messageEncode(event: event, data: data, type: type) else {
-                self.delegate?.onError(error: ClusterWSErrors.JSONStringifyError(data))
+            guard let anyData = self.mParser.encode(event: event, data: data, type: type) else {
+                self.delegate?.onError(error: CWSErrors.JSONStringifyError(data))
                 return
             }
             self.mWebSocket?.send(anyData)
         }
+    }
+    
+    open func setBinary(to binary: Bool) {
+        self.mUseBinary = binary
+    }
+    
+    open func emit(event: String, data: Any) {
+        self.mEmitter.emit(event: event, data: data)
+    }
+    
+    open func removeChannel(_ channel: CWSChannel) {
+        self.mChannels = self.mChannels.filter { $0 != channel }
+    }
+    
+    open func startPinging(with interval: TimeInterval) {
+        self.mPingHandler.start(interval: interval, socket: self)
     }
 }
