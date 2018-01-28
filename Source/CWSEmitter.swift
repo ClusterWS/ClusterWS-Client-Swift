@@ -1,5 +1,5 @@
 //
-//  Emitter.swift
+//  CWSEmitter.swift
 //  ClusterWS-Client-Swift
 //
 //  Created by Roman Baitaliuk on 3/10/17.

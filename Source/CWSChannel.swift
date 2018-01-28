@@ -1,5 +1,5 @@
 //
-//  Channel.swift
+//  CWSChannel.swift
 //  Test
 //
 //  Created by Roman Baitaliuk on 6/10/17.

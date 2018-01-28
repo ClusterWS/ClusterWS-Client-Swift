@@ -1,5 +1,5 @@
 //
-//  ErrorHandler.swift
+//  CWSErrors.swift
 //  ClusterWSTests
 //
 //  Created by Roman Baitaliuk on 20/01/18.
