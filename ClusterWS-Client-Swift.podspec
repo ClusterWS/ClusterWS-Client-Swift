@@ -21,10 +21,9 @@ Pod::Spec.new do |s|
   s.source_files = 'Core'
   s.libraries = 'z'
 
-  s.test_spec 'Tests' do |test_spec|
-    test_spec.source_files = 'Tests'
-    test_spec.requires_app_host = true
-  end  
+  # s.test_spec 'Tests' do |test_spec|
+  #   test_spec.source_files = 'Tests'
+  # end  
 
   #s.dependency "SwiftWebSocket"
  
