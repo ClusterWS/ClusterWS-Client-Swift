@@ -8,17 +8,15 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/ClusterWS/ClusterWS-Client-Swift'
   s.license          = { :type => 'MIT' }
 
-  # s.ios.deployment_target = "11.0"
-  # s.tvos.deployment_target = "11.0"
-  # s.osx.deployment_target = "10.10"
-  # s.watchos.deployment_target = "2.0"
-
   s.author           = { '<Roman Baitaliuk>' => '<romanbaital@gmail.com>' }
   s.source           = { :git => 'https://github.com/ClusterWS/ClusterWS-Client-Swift.git', :tag => s.version.to_s }
  
   s.requires_arc = true
 
   s.ios.deployment_target = '11.0'
+  s.tvos.deployment_target = "11.0"
+  s.osx.deployment_target = "10.13"
+  s.watchos.deployment_target = "4.0"
   s.source_files = 'Core'
   s.libraries = 'z'
 
