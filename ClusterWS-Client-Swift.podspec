@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = "10.0"
   s.osx.deployment_target = "10.12"
 
-  s.source_files = 'Source'
+  s.source_files = 'Sources'
   s.libraries = 'z'
 
   # s.test_spec 'Tests' do |test_spec|
