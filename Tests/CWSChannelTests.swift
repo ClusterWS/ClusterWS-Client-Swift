@@ -1,5 +1,5 @@
 //
-//  ChannelTests.swift
+//  CWSChannelTests.swift
 //  ClusterWSTestsTests
 //
 //  Created by Roman Baitaliuk on 10/10/17.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import ClusterWSTests
 
-class ChannelTests: XCTestCase {
+class CWSChannelTests: XCTestCase {
     var webSocket: ClusterWS!
     
     override func setUp() {
