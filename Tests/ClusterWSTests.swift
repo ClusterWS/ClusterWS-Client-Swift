@@ -1,13 +1,13 @@
 //
-//  ClusterWSTestsTests.swift
-//  ClusterWSTestsTests
+//  ClusterWSTests.swift
+//  CWSTests
 //
 //  Created by Roman Baitaliuk on 9/10/17.
 //  Copyright © 2017 ByteKit. All rights reserved.
 //
 
 import XCTest
-@testable import ClusterWSTests
+import ClusterWS_Client_Swift
 
 class ClusterWSTests: XCTestCase {
     var webSocket: ClusterWS!
@@ -56,8 +56,8 @@ class ClusterWSTests: XCTestCase {
         
         let sendOnExpectation = expectation(description: "Send, on expectation result")
         
-        self.webSocket.send(event: "String", data: 30)
-        self.webSocket.on(event: "String") { (data) in
+        self.webSocket.send(event: "Int", data: 30)
+        self.webSocket.on(event: "Int") { (data) in
             guard ((data as? Int) != nil) else {
                 return XCTFail()
             }
@@ -71,8 +71,8 @@ class ClusterWSTests: XCTestCase {
         
         let sendOnExpectation = expectation(description: "Send, on expectation result")
         
-        self.webSocket.send(event: "String", data: [30,23])
-        self.webSocket.on(event: "String") { (data) in
+        self.webSocket.send(event: "Array", data: [30,23])
+        self.webSocket.on(event: "Array") { (data) in
             guard ((data as? [Any]) != nil) else {
                 return XCTFail()
             }
@@ -84,8 +84,8 @@ class ClusterWSTests: XCTestCase {
     func testSendOnDictionary() {
         self.testOnConnect()
         let sendOnExpectation = expectation(description: "Send, on expectation result")
-        self.webSocket.send(event: "String", data: ["id": 0])
-        self.webSocket.on(event: "String") { (data) in
+        self.webSocket.send(event: "Dictionary", data: ["id": 0])
+        self.webSocket.on(event: "Dictionary") { (data) in
             guard ((data as? [String: Any]) != nil) else {
                 return XCTFail()
             }
@@ -102,18 +102,6 @@ class ClusterWSTests: XCTestCase {
         }
         wait(for: [pingPongExpectation], timeout: 1.5)
         XCTAssertEqual(self.webSocket.getState(), .open)
-    }
-    
-    func testGetChannel() {
-        self.testOnConnect()
-        
-        let channelName = "channel name"
-        let newChannel = self.webSocket.subscribe(channelName)
-        guard let recievedChannel = self.webSocket.getChannel(by: channelName) else {
-            return XCTFail()
-        }
-        
-        XCTAssertEqual(newChannel, recievedChannel)
     }
     
     func testDisconnect() {

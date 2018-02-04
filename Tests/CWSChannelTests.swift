@@ -1,13 +1,13 @@
 //
 //  CWSChannelTests.swift
-//  ClusterWSTestsTests
+//  CWSTests
 //
 //  Created by Roman Baitaliuk on 10/10/17.
 //  Copyright © 2017 ByteKit. All rights reserved.
 //
 
 import XCTest
-@testable import ClusterWSTests
+import ClusterWS_Client_Swift
 
 class CWSChannelTests: XCTestCase {
     var webSocket: ClusterWS!
@@ -51,6 +51,25 @@ class CWSChannelTests: XCTestCase {
         _ = channels.map { self.webSocket.subscribe($0) }
         let recievedChannels = self.webSocket.getChannels().map { $0.mChannelName }
         XCTAssertEqual(channels, recievedChannels)
+    }
+    
+    func testPublishAndWatch() {
+        self.webSocket.connect()
+        let connectionExpectation = expectation(description: "connection expectation")
+        Timer.scheduledTimer(withTimeInterval: 1.9, repeats: false) { (_) in
+            if self.webSocket.getState() == .open {
+                connectionExpectation.fulfill()
+            }
+        }
+        wait(for: [connectionExpectation], timeout: 2.0)
+        let channelName = "test channel"
+        let currentData = "test string"
+        _ = self.webSocket.subscribe(channelName).publish(data: currentData).watch { (data) in
+            guard let recievedData = data as? String else {
+                return XCTFail()
+            }
+            XCTAssertEqual(recievedData, currentData)
+        }
     }
     
     func testUnsubscribe() {
