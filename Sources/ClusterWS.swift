@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: Properties & Initialization
-open class ClusterWS {
+open class ClusterWS: NSObject {
     public var delegate: CWSDelegate?
     private let mEmitter: CWSEmitter
     private let mPingHandler: CWSPing

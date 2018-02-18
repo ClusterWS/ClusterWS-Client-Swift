@@ -21,17 +21,19 @@ class CWSChannelTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        self.webSocket.disconnect()
     }
     
     func testGetChannel() {
         self.webSocket.connect()
         let connectionExpectation = expectation(description: "connection expectation")
-        Timer.scheduledTimer(withTimeInterval: 1.9, repeats: false) { (_) in
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
             if self.webSocket.getState() == .open {
                 connectionExpectation.fulfill()
+                timer.invalidate()
             }
         }
-        wait(for: [connectionExpectation], timeout: 2.0)
+        wait(for: [connectionExpectation], timeout: 5.0)
         let channelName = "test channel"
         let subscribedChannel = self.webSocket.subscribe(channelName)
         let recievedChannel = self.webSocket.getChannel(by: channelName)
@@ -41,50 +43,148 @@ class CWSChannelTests: XCTestCase {
     func testGetAllChannels() {
         self.webSocket.connect()
         let connectionExpectation = expectation(description: "connection expectation")
-        Timer.scheduledTimer(withTimeInterval: 1.9, repeats: false) { (_) in
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
             if self.webSocket.getState() == .open {
                 connectionExpectation.fulfill()
+                timer.invalidate()
             }
         }
-        wait(for: [connectionExpectation], timeout: 2.0)
+        wait(for: [connectionExpectation], timeout: 5.0)
         let channels = ["first channel", "second channel", "third channel"]
         _ = channels.map { self.webSocket.subscribe($0) }
         let recievedChannels = self.webSocket.getChannels().map { $0.mChannelName }
         XCTAssertEqual(channels, recievedChannels)
     }
     
-    func testPublishAndWatch() {
+    func testPublishWatchString() {
         self.webSocket.connect()
         let connectionExpectation = expectation(description: "connection expectation")
-        Timer.scheduledTimer(withTimeInterval: 1.9, repeats: false) { (_) in
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
             if self.webSocket.getState() == .open {
                 connectionExpectation.fulfill()
+                timer.invalidate()
             }
         }
-        wait(for: [connectionExpectation], timeout: 2.0)
+        wait(for: [connectionExpectation], timeout: 5.0)
         let channelName = "test channel"
-        let currentData = "test string"
-        _ = self.webSocket.subscribe(channelName).publish(data: currentData).watch { (data) in
-            guard let recievedData = data as? String else {
+        let currentString = "test string"
+        _ = self.webSocket.subscribe(channelName).publish(data: currentString).watch { (data) in
+            guard let recievedString = data as? String else {
                 return XCTFail()
             }
-            XCTAssertEqual(recievedData, currentData)
+            XCTAssertEqual(recievedString, currentString)
+        }
+    }
+    
+    func testPublishWatchInt() {
+        self.webSocket.connect()
+        let connectionExpectation = expectation(description: "connection expectation")
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
+            if self.webSocket.getState() == .open {
+                connectionExpectation.fulfill()
+                timer.invalidate()
+            }
+        }
+        wait(for: [connectionExpectation], timeout: 5.0)
+        let channelName = "test channel"
+        let currentInt = 30
+        _ = self.webSocket.subscribe(channelName).publish(data: currentInt).watch { (data) in
+            guard let recievedInt = data as? String else {
+                return XCTFail()
+            }
+            XCTAssertEqual(currentInt, Int(recievedInt))
+        }
+    }
+    
+    func testPublishWatchDictionary() {
+        self.webSocket.connect()
+        let connectionExpectation = expectation(description: "connection expectation")
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
+            if self.webSocket.getState() == .open {
+                connectionExpectation.fulfill()
+                timer.invalidate()
+            }
+        }
+        wait(for: [connectionExpectation], timeout: 5.0)
+        let channelName = "test channel"
+        let key = "id"
+        let value = 0
+        let currentDictionary = [key: value]
+        _ = self.webSocket.subscribe(channelName).publish(data: currentDictionary).watch { (data) in
+            guard let recievedDictionaryString = data as? String else {
+                return XCTFail()
+            }
+            if !recievedDictionaryString.contains(key) && !recievedDictionaryString.contains(String(value)) {
+                return XCTFail()
+            }
+        }
+    }
+    
+    func testPublishWatchArray() {
+        self.webSocket.connect()
+        let connectionExpectation = expectation(description: "connection expectation")
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
+            if self.webSocket.getState() == .open {
+                connectionExpectation.fulfill()
+                timer.invalidate()
+            }
+        }
+        wait(for: [connectionExpectation], timeout: 5.0)
+
+        let channelName = "test channel"
+        let value1 = 30
+        let value2 = "test"
+        let currentArray = [value1, value2] as [Any]
+        _ = self.webSocket.subscribe(channelName).publish(data: currentArray).watch { (data) in
+            guard let recievedArrayString = data as? String else {
+                return XCTFail()
+            }
+            if !recievedArrayString.contains(String(value1)) && !recievedArrayString.contains(value2) {
+                return XCTFail()
+            }
+        }
+    }
+    
+    func testPublishWatchBoolean() {
+        self.webSocket.connect()
+        let connectionExpectation = expectation(description: "connection expectation")
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
+            if self.webSocket.getState() == .open {
+                connectionExpectation.fulfill()
+                timer.invalidate()
+            }
+        }
+        wait(for: [connectionExpectation], timeout: 5.0)
+        
+        let channelName = "test channel"
+        let currentBoolean = false
+        _ = self.webSocket.subscribe(channelName).publish(data: currentBoolean).watch { (data) in
+            guard let recievedBooleanStringNumber = data as? String else {
+                return XCTFail()
+            }
+            if recievedBooleanStringNumber == "0" || recievedBooleanStringNumber == "1" {
+                XCTAssertEqual(Int(recievedBooleanStringNumber), currentBoolean.hashValue)
+            } else {
+                XCTFail()
+            }
         }
     }
     
     func testUnsubscribe() {
         self.webSocket.connect()
         let connectionExpectation = expectation(description: "connection expectation")
-        Timer.scheduledTimer(withTimeInterval: 1.9, repeats: false) { (_) in
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
             if self.webSocket.getState() == .open {
                 connectionExpectation.fulfill()
+                timer.invalidate()
             }
         }
-        wait(for: [connectionExpectation], timeout: 2.0)
+        wait(for: [connectionExpectation], timeout: 5.0)
+        
         let channelName = "test channel"
         let subscribedChannel = self.webSocket.subscribe(channelName)
         subscribedChannel.unsubscribe()
-        let recievedChannel = self.webSocket.getChannel(by: channelName)
+        let recievedChannel = self.webSocket?.getChannel(by: channelName)
         XCTAssertEqual(nil, recievedChannel)
     }
 }

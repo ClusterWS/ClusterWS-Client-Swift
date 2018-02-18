@@ -21,10 +21,12 @@ class ClusterWSTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        self.webSocket.disconnect()
     }
     
     func testOnConnect() {
         self.webSocket.connect()
+        
         let connectExpectation = expectation(description: "connect expectation")
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
             if self.webSocket.getState() == .open {
@@ -32,6 +34,7 @@ class ClusterWSTests: XCTestCase {
                 connectExpectation.fulfill()
             }
         }
+        
         waitForExpectations(timeout: 5.0, handler: nil)
         XCTAssertEqual(self.webSocket.getState(), .open)
     }
@@ -40,10 +43,11 @@ class ClusterWSTests: XCTestCase {
         self.testOnConnect()
         
         let sendOnExpectation = expectation(description: "Send, on expectation result")
+        let currentString = "test string"
         
-        self.webSocket.send(event: "String", data: "test string")
+        self.webSocket.send(event: "String", data: currentString)
         self.webSocket.on(event: "String") { (data) in
-            guard ((data as? String) != nil) else {
+            guard let recievedString = data as? String, recievedString == currentString else {
                 return XCTFail()
             }
             sendOnExpectation.fulfill()
@@ -55,10 +59,11 @@ class ClusterWSTests: XCTestCase {
         self.testOnConnect()
         
         let sendOnExpectation = expectation(description: "Send, on expectation result")
+        let currentInt = 30
         
-        self.webSocket.send(event: "Int", data: 30)
-        self.webSocket.on(event: "Int") { (data) in
-            guard ((data as? Int) != nil) else {
+        self.webSocket.send(event: "Number", data: currentInt)
+        self.webSocket.on(event: "Number") { (data) in
+            guard let recievedInt = data as? Int, recievedInt == currentInt else {
                 return XCTFail()
             }
             sendOnExpectation.fulfill()
@@ -70,10 +75,11 @@ class ClusterWSTests: XCTestCase {
         self.testOnConnect()
         
         let sendOnExpectation = expectation(description: "Send, on expectation result")
+        let currentArray: [Int] = [30, 20]
         
-        self.webSocket.send(event: "Array", data: [30,23])
+        self.webSocket.send(event: "Array", data: currentArray)
         self.webSocket.on(event: "Array") { (data) in
-            guard ((data as? [Any]) != nil) else {
+            guard let recievedArray = data as? [Int], currentArray == recievedArray else {
                 return XCTFail()
             }
             sendOnExpectation.fulfill()
@@ -83,10 +89,29 @@ class ClusterWSTests: XCTestCase {
     
     func testSendOnDictionary() {
         self.testOnConnect()
+        
         let sendOnExpectation = expectation(description: "Send, on expectation result")
-        self.webSocket.send(event: "Dictionary", data: ["id": 0])
-        self.webSocket.on(event: "Dictionary") { (data) in
-            guard ((data as? [String: Any]) != nil) else {
+        let currentObject = ["object": 0]
+        
+        self.webSocket.send(event: "Object", data: currentObject)
+        self.webSocket.on(event: "Object") { (data) in
+            guard let recievedObject = data as? [String: Int], currentObject["object"] == recievedObject["object"] else {
+                return XCTFail()
+            }
+            sendOnExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 5.0)
+    }
+    
+    func testSendOnBoolean() {
+        self.testOnConnect()
+        
+        let sendOnExpectation = expectation(description: "Send, on expectation result")
+        let currentBoolean = true
+        
+        self.webSocket.send(event: "Boolean", data: currentBoolean)
+        self.webSocket.on(event: "Boolean") { (data) in
+            guard let recievedBoolean = data as? Bool, recievedBoolean == currentBoolean else {
                 return XCTFail()
             }
             sendOnExpectation.fulfill()
@@ -96,17 +121,19 @@ class ClusterWSTests: XCTestCase {
     
     func testPingPong() {
         self.testOnConnect()
+        
         let pingPongExpectation = expectation(description: "ping pong expectation")
         Timer.scheduledTimer(withTimeInterval: 1.4, repeats: false) { (_) in
             pingPongExpectation.fulfill()
         }
+        
         wait(for: [pingPongExpectation], timeout: 1.5)
         XCTAssertEqual(self.webSocket.getState(), .open)
     }
     
     func testDisconnect() {
         self.testOnConnect()
-        
+
         let disconnectExpectation = expectation(description: "disconnect expectation")
         self.webSocket.disconnect()
         

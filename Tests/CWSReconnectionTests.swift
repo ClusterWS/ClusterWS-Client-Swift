@@ -35,20 +35,27 @@ class CWSReconnectionTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        self.webSocket = ClusterWS(url: "wss://localhost:0000")
-        self.webSocket.delegate = self
     }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
         self.currentAttamts = 0
+        self.webSocket.disconnect()
     }
     
-    /**
-         Make sure your localhost server shut down or you're using wrong ClusterWS url.
-     */
-    func testReconnectionAttamts() {
+    private func initSocketWithWrongUrl() {
+        self.webSocket = ClusterWS(url: "wss://localhost:0000")
+        self.webSocket.delegate = self
+    }
+    
+    private func initSocketWithRightUrl() {
+        self.webSocket = ClusterWS(url: "wss://localhost:8080")
+        self.webSocket.delegate = self
+    }
+    
+    func testReconnectionAttemts() {
+        self.initSocketWithWrongUrl()
         self.webSocket.setReconnection(autoReconnect: true, reconnectionIntervalMin: reconnectionIntervalMin, reconnectionIntervalMax: reconnectionIntervalMax, reconnectionAttempts: reconnectionAttempts)
         self.webSocket.connect()
         let timeout = reconnectionIntervalMax * Double(reconnectionAttempts)
@@ -61,19 +68,35 @@ class CWSReconnectionTests: XCTestCase {
         wait(for: [connectionExpectation], timeout: timeout)
     }
     
-    /**
-         Make sure your localhost server shut down or you're using wrong ClusterWS url.
-     */
-    func testAutoReconnect() {
+    func testAutoReconnectTrue() {
+        self.initSocketWithRightUrl()
         self.webSocket.setReconnection(autoReconnect: true, reconnectionIntervalMin: reconnectionIntervalMin, reconnectionIntervalMax: reconnectionIntervalMax, reconnectionAttempts: reconnectionAttempts)
         self.webSocket.connect()
-        let timeout = reconnectionIntervalMax * Double(reconnectionAttempts)
+        self.webSocket.disconnect(closeCode: 1001, reason: "Reconnection test disconnect")
         let connectionExpectation = expectation(description: "connection expectation")
-        Timer.scheduledTimer(withTimeInterval: timeout - 0.1, repeats: false) { (_) in
-            if self.currentAttamts > 1 {
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
+            if self.webSocket.getState() == .open {
+                timer.invalidate()
                 connectionExpectation.fulfill()
             }
         }
-        wait(for: [connectionExpectation], timeout: timeout)
+        wait(for: [connectionExpectation], timeout: 5.0)
+        XCTAssertEqual(self.webSocket.getState(), .open)
+    }
+    
+    func testAutoReconnectFalse() {
+        self.initSocketWithRightUrl()
+        self.webSocket.setReconnection(autoReconnect: false, reconnectionIntervalMin: reconnectionIntervalMin, reconnectionIntervalMax: reconnectionIntervalMax, reconnectionAttempts: reconnectionAttempts)
+        self.webSocket.connect()
+        self.webSocket.disconnect(closeCode: 1001, reason: "Reconnection test disconnect")
+        let connectionExpectation = expectation(description: "connection expectation")
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
+            if self.webSocket.getState() == .closed {
+                timer.invalidate()
+                connectionExpectation.fulfill()
+            }
+        }
+        wait(for: [connectionExpectation], timeout: 5.0)
+        XCTAssertEqual(self.webSocket.getState(), .closed)
     }
 }

@@ -80,6 +80,7 @@ extension CWSParser {
     }
 }
 
+//MARK: Private methods
 extension CWSParser {
     private func convertToJSON(text: String) -> [String: Any]? {
         if let data = text.data(using: .utf8) {

@@ -59,19 +59,19 @@ extension CWSReconnection {
         let max = UInt32(self.mReconnectionIntervalMax * 1000)
         let min = UInt32(self.mReconnectionIntervalMin * 1000)
         let randomNumber = arc4random_uniform(max-min)+min
-        self.mReconnectionTimer = Timer.scheduledTimer(withTimeInterval: Double(randomNumber / 1000),
-                                                       repeats: false,
-                                                       block: { (timer) in
-                                                        if self.mSocket.getState() == .closed {
-                self.mCurrentReconnectionAttempted += 1
-                if self.mReconnectionAttempts != 0 && self.mCurrentReconnectionAttempted >= self.mReconnectionAttempts {
-                    self.resetTimer()
-                } else {
-                    self.resetTimer()
-                    self.mSocket.connect()
-                }
-            }
-        })
+        if #available(iOS 10.0, OSX 10.12, tvOS 10.0, *) {
+            self.mReconnectionTimer = Timer.scheduledTimer(withTimeInterval: Double(randomNumber / 1000),
+                                                           repeats: false,
+                                                           block: { (timer) in
+                                                            self.reconnectionBlock()
+            })
+        } else {
+            self.mReconnectionTimer = Timer(timeInterval: Double(randomNumber / 1000),
+                                            target: self, selector: #selector(reconnectionBlock),
+                                            userInfo: nil,
+                                            repeats: false)
+            self.mReconnectionTimer?.fire()
+        }
     }
 }
 
@@ -80,5 +80,17 @@ extension CWSReconnection {
     private func resubscribe() {
         let channels = self.mSocket.getChannels()
         channels.forEach { _ = self.mSocket.subscribe($0.mChannelName) }
+    }
+    
+    @objc private func reconnectionBlock() {
+        if self.mSocket.getState() == .closed {
+            self.mCurrentReconnectionAttempted += 1
+            if self.mReconnectionAttempts != 0 && self.mCurrentReconnectionAttempted >= self.mReconnectionAttempts {
+                self.resetTimer()
+            } else {
+                self.resetTimer()
+                self.mSocket.connect()
+            }
+        }
     }
 }
