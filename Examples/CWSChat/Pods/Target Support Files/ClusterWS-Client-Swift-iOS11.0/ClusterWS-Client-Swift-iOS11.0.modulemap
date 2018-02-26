@@ -1,6 +1,0 @@
-framework module ClusterWS_Client_Swift {
-  umbrella header "ClusterWS-Client-Swift-iOS11.0-umbrella.h"
-
-  export *
-  module * { export * }
-}

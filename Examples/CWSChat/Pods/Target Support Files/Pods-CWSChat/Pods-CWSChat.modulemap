@@ -1,6 +1,0 @@
-framework module Pods_CWSChat {
-  umbrella header "Pods-CWSChat-umbrella.h"
-
-  export *
-  module * { export * }
-}
