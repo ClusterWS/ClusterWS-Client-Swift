@@ -1,0 +1,1398 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00C429D200C0C388329D008721A58BA2 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42CAB86681072DB6A5445810950029A /* String+Extensions.swift */; };
+		022ACA259E9CB1C1B7E38E4CE41AA45A /* InputStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6639B87CC5C9C673F722E08858E007 /* InputStackView.swift */; };
+		0932BA186BEDA961370B7BEB8F1D57E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		0C1C7517D7CC65A019EBD24BF4DFD772 /* InputBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6729AFE84131BB0D6013E04BEA7B1E0 /* InputBarItem.swift */; };
+		0C410FF160B54953D88C0BACCEB8A751 /* MessageKitAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 540C0952F229C82D8544225AF7B43B93 /* MessageKitAssets.bundle */; };
+		1A1347CAD10A61055AFA4632DA2C18DC /* ClusterWS-Client-Swift-iOS9.0-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF5283E3CBD54272ABC134EF2D6CCBC /* ClusterWS-Client-Swift-iOS9.0-dummy.m */; };
+		1B3B9B99F58A6C2B19DF67EF4F6BE09C /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 62B3CDC680207F2426BAA76B41117532 /* Images */; };
+		203B335A190456B02ECDB59B8ACCA09B /* CWSEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F4C114F81E5A6DBE6CC9BE0984729 /* CWSEmitter.swift */; };
+		2303538AD5FE90F27B21AB4E772E5A12 /* MessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D7D005B1F214C897B91F57439E4284 /* MessageLabel.swift */; };
+		2374E9119057BBB14156766F7584CAE5 /* CWSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09893EE78FAC484DA18C01C512071892 /* CWSParser.swift */; };
+		24961BD796F31183E062781E57908EE6 /* SeparatorLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235EA78107AB9B4426382EDF998F4597 /* SeparatorLine.swift */; };
+		2952B3F8141E3CFCD455885D2C9C9E52 /* MessagesLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA896E490B6120E2B97403097DB814CF /* MessagesLayoutDelegate.swift */; };
+		2F7831E169223A1597CF4987474FDD72 /* MessageInputBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC01E69793C13BDA1D0AD942E39733F /* MessageInputBarDelegate.swift */; };
+		315D6000E288F0F2FB52939931101123 /* LocationMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6146A928A5CE7B2DAD6C0EBE4A1544F /* LocationMessageCell.swift */; };
+		35B7B6780D9EBECCBF55FB2E4606FC8B /* CWSReconnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404595B0F022D43333F1174CDADE577E /* CWSReconnection.swift */; };
+		3A703BC5BD63F75AF13125D07ED08F11 /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B43551C98F6A5CDE18AFF57E71D546F6 /* LabelAlignment.swift */; };
+		3B8D63067B71BD90B48AC1BE021EFA13 /* CWSReconnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404595B0F022D43333F1174CDADE577E /* CWSReconnection.swift */; };
+		3D0837F96FDB5B100E6F364E753CA452 /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0B59656D0528342FB0BC56B27148B2 /* NSAttributedString+Extensions.swift */; };
+		3DDDC49FD6B4D564D9CFB5E844658F2F /* MessagesViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B2F293AC54B92315D37F23320348D8 /* MessagesViewController+DataSource.swift */; };
+		3DEA4B6738E5178403CA4762ECC3FBF9 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EEAF16351DF3B0F3F15DA7836C835B /* MessageType.swift */; };
+		3FBC91DBB090F2BB3CCA5C5D4204562F /* MessageFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ACF92F53C7C70E779875094580C431 /* MessageFooterView.swift */; };
+		419F93B8BF2B80A23C21B26C285C7EB6 /* CWSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09893EE78FAC484DA18C01C512071892 /* CWSParser.swift */; };
+		48A0C436ADF57F5559B5AB5DF65DFA3E /* ClusterWS-Client-Swift-iOS11.0-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E15C49151C5BA081E2B9AFA007FEDE99 /* ClusterWS-Client-Swift-iOS11.0-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4A44778FD197D14BE28E32885F8F3FED /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969FAC1229EFF1EAF645A9A7B3297635 /* WebSocket.swift */; };
+		4C8B86F6D40EA6E4C3078FEA6D05DF65 /* MessagesViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D5C1E437FAB1BC672A5782DC844CFCE /* MessagesViewController+Keyboard.swift */; };
+		4D3FBB43C22E9524415F364DC15321BD /* MessageKitDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551D1347E86DC81CC7CED9E8679DD33 /* MessageKitDateFormatter.swift */; };
+		4DC68D48D295541687B3DDBD1B5ACF4E /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B427B197851DC327CB94367F5A2A9DD0 /* Sender.swift */; };
+		4EDA06E2A1CB8FF52F934D86E96C09D8 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69186EB3ACD4360667CA6340B1312143 /* MessagesViewController.swift */; };
+		50F943A4CA2C7E84E3488425669D29BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		555441BED12437F8D8DC6009CA138457 /* MessageDateHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A8C63CDF548543130AC43264A3387E /* MessageDateHeaderView.swift */; };
+		6345AB15B39E8336263E74D4096C9EB6 /* MessageKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A814377D48279277A3C8DBE24F302 /* MessageKit-dummy.m */; };
+		657C32E7F85FFE7694ED87E9549969A8 /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE1BDDBAFE1A59472A2E15A02DEF938 /* CGRect+Extensions.swift */; };
+		66168031205F42A1B338363F461A02FE /* MessagesViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2C7A99AAA2470346464D474EDD116 /* MessagesViewController+Delegate.swift */; };
+		6B977264C9952A0E084F73735235675D /* MessageContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BDF9DC9DC93024CCA4D5050CEFFF4F /* MessageContainerView.swift */; };
+		6BF5D222C18353CE4D5AA46679C3CF02 /* TextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC88CC27D16CFF93547449BC65FE12A3 /* TextMessageCell.swift */; };
+		716E2245B3274DADD1DD16F2CCAF1A78 /* Pods-CWSTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FDA7858ACDE9DEB538B886201BE85E /* Pods-CWSTests-dummy.m */; };
+		718FEAC1BC90CA7E6A6690E33E096663 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0BDE82FC0AD29A5D3EC5B5AC7716F8 /* AvatarView.swift */; };
+		71A10281C89350EB6692ECE0CC7C6C4B /* CWSDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31F1E805E373AC0BFF4EE33F4357B /* CWSDelegate.swift */; };
+		77BDD8B1FDAE51F0E1B1AE6917F76E97 /* MessagesCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9130D723598914675E90FA556C038C73 /* MessagesCollectionViewFlowLayout.swift */; };
+		8078DF7BB4254A025D4191BEA4ACB3A1 /* MessagesDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6076DC423AA27296EFEEE5D0F306242 /* MessagesDisplayDelegate.swift */; };
+		8143D078DC14B29AD20775FB73BB0C87 /* Pods-CWSChat-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F4FF4E05F9B290EC267AF395CF382D61 /* Pods-CWSChat-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84F21FF3223E7CDAA139DCE447E65F95 /* CWSPing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD0832BA3CF2188470EBB8D15B5D739 /* CWSPing.swift */; };
+		859AB9998D1562C150BAD7F79A228AAD /* MessageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1570E49BA8C657066B3FA7CED97103 /* MessageData.swift */; };
+		86F5877F8608ED7CB96CCFFA4B6C2917 /* MessageKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E4E33AEC5FE537D20CE3DC168C73F4D /* MessageKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		87A02D3C2809F5744E520624FF3C50E2 /* CWSErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA5948F9D2D0C02886373B0C2A90ABF /* CWSErrors.swift */; };
+		8B1BB9FFCEAFBF3BB005F5706CD69C1F /* AvatarPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B9A7FD0080CDF689CA785193F21D9D /* AvatarPosition.swift */; };
+		8CDA656577868EDA391AD7C678DA75E6 /* MessageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302E56B5C6A7E86C273435649D33F4D5 /* MessageStyle.swift */; };
+		8D9B640EC1662E21BF687906F151BB88 /* MessageInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0583F5576A8EE7F0B2763DB542632CB0 /* MessageInputBar.swift */; };
+		8EBF73630A17C16AEAFFB6B0338FB85B /* MediaMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD1CC6B2BA6B7C42666B5C750F3203E /* MediaMessageCell.swift */; };
+		920B6215488CF3C0A12B770C92DF5813 /* MessagesViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67D4B5E8A3E5E2BD2D2525CA99D5ED48 /* MessagesViewController+Menu.swift */; };
+		93B2361F2BF10E048EA8FD2D365BE119 /* MessageKitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8DF17416A72F217DDE0718ADC0B3D /* MessageKitError.swift */; };
+		9461B21EA312738D18E3A33E836D1FCC /* MessageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E89EFAEBFA1FCD36B5C445F73123416 /* MessageHeaderView.swift */; };
+		9B3CF63CA57B76802B28B0EFE88CD063 /* MessageLabelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62200925BB93BFA0D6578D7BFAFDCA5E /* MessageLabelDelegate.swift */; };
+		9EE0BBD37B8C3A6BA39628A9581ACE53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		A0A683036EF7D345A7217DF577D3D4EF /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70D5A9DC1BC02414E48EE56792AAA25 /* Bundle+Extensions.swift */; };
+		AB16B3940853AFCFD9973A0688C60FA9 /* ClusterWS-Client-Swift-iOS9.0-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BF71E8C9212F03B05FB91FF924F6E29 /* ClusterWS-Client-Swift-iOS9.0-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AB4A3678D440E6FF6D5F595F7DF75518 /* CWSEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F4C114F81E5A6DBE6CC9BE0984729 /* CWSEmitter.swift */; };
+		AC866C1B34C7F7707678F94C2BB572B7 /* CWSChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F21CF8BAC9F191353D9D1587F1AE41D /* CWSChannel.swift */; };
+		BB3C4A54EEF4A01543C43358A139B231 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B2B97F1A8F2574A51BCC8A8B6C664D /* MessageCollectionViewCell.swift */; };
+		BDE7B87C57C46C3EE98FB9DCE74146B8 /* NSConstraintLayoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E8C2741CFB791417E28AA817CEE1F6 /* NSConstraintLayoutSet.swift */; };
+		BE5EE66E50D20E7A270550812D755B8F /* ClusterWS-Client-Swift-iOS11.0-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E1AD3C0FA2F67C80915EF89940147A6E /* ClusterWS-Client-Swift-iOS11.0-dummy.m */; };
+		C4D283D84D3B08240213F6BD29B45131 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EB7478B272456BD135E2C78D0DEF55 /* UIView+Extensions.swift */; };
+		CBC7151EF67C314CD47458593D0A2EEA /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CE3307671F575BB52124550215BD7D /* UICollectionView+Extensions.swift */; };
+		D01FF5A2E257658FC35B8940238E8C0E /* DetectorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4A024DF21AFD723AC72475D023A8B7 /* DetectorType.swift */; };
+		D1C0976ED566A4B92141B40022034E8C /* Pods-CWSChat-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BA01CA0EA66CF639339564EA00B581F1 /* Pods-CWSChat-dummy.m */; };
+		D4614727D4517C3B6174D7132F3A1897 /* CWSDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D31F1E805E373AC0BFF4EE33F4357B /* CWSDelegate.swift */; };
+		D65D69EF95752919D1F21C1DEE4C949C /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969FAC1229EFF1EAF645A9A7B3297635 /* WebSocket.swift */; };
+		D9885D81F92158D328D8A1540D611181 /* MessagesCollectionViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F89485A56784B48831FF8F7F6EFFFD /* MessagesCollectionViewLayoutAttributes.swift */; };
+		DA283E9834A89C5BFB44DCDA5F28E6D5 /* ClusterWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173958EB49EB73C875D161C7765220E6 /* ClusterWS.swift */; };
+		DF2AA3B7C478456FA471A260E601AF1E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		DF9338F744AB32A315908DAE5DF5D368 /* CWSErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CA5948F9D2D0C02886373B0C2A90ABF /* CWSErrors.swift */; };
+		E0A00E56A3849A6C031BB939FFB75108 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AEF20917E3402CFE584836E8F48C9B /* UIColor+Extensions.swift */; };
+		E16A5C2265248AE76A3BD7797F9C9263 /* MessageCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AB0E6FF3A8AD647277A59F8219CE8E /* MessageCellDelegate.swift */; };
+		E1FDD8C533C6099BE2BFE712FDAF8B44 /* MessageIntermediateLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA41ACF226A49DC63A3E3D0452AD9CD /* MessageIntermediateLayoutAttributes.swift */; };
+		E2E4E172F5CA704336FF7F4D6BF5991E /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB45445232EBE1A02D5ACB1FF002E8A /* Avatar.swift */; };
+		E2E9E2978130052FB7AE053CEB84E6DB /* MessageKit+Availability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 055E342DCFBC3337B4D8FF75F780F15B /* MessageKit+Availability.swift */; };
+		E6BF78E9FDA1B8144B342AB89371B3A8 /* MessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D51F7F3D355A35E0CCE651BA8BB16C6 /* MessagesDataSource.swift */; };
+		E989CD2313A27526326786A20C343B03 /* CWSChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F21CF8BAC9F191353D9D1587F1AE41D /* CWSChannel.swift */; };
+		EAA9D149C0E25889041852087C3A2FB8 /* MessagesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806172FDDB7E785B5D8C5FFD88BA622C /* MessagesCollectionView.swift */; };
+		F0648CA801794AF8E08501AB9698012B /* ClusterWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173958EB49EB73C875D161C7765220E6 /* ClusterWS.swift */; };
+		F356D48759943D5D31EE75E3F9B2CCE3 /* PlayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C221483BE06DCB330FD682A9095088 /* PlayButtonView.swift */; };
+		F6ACEE587A431F483BA6ECF0641739C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		F6B5BB0BD81BDA64BCF349920807A17E /* LocationMessageSnapshotOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260909427182B09756236BD8BAF05173 /* LocationMessageSnapshotOptions.swift */; };
+		F92586CBA92B9CC6AC6F0279469788BD /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A3703DAFADF4CEF6BE34D66A32C6C9 /* InputTextView.swift */; };
+		FD23CE4C2E6437D0AF7E567D37AAB83B /* Pods-CWSTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0954E67C277F203536345EF0FDF751A9 /* Pods-CWSTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF503797BE83E7D3D07E8B405CD3FB69 /* CWSPing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD0832BA3CF2188470EBB8D15B5D739 /* CWSPing.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3B9B4E0DA4C8791C90A2AAFA312F6AC9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A85D9FACDBE947934FD67B206D66002;
+			remoteInfo = MessageKit;
+		};
+		60430EBEA2DFDE7A80A8A9BA807A763A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A9CEE14A517BCAD352A599570C3897CB;
+			remoteInfo = "ClusterWS-Client-Swift-iOS11.0";
+		};
+		6BB72DDC2ED315028A7325F5421AB5D4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4BCD1F001D84ABAC7E1585BE4F1721E6;
+			remoteInfo = "MessageKit-MessageKitAssets";
+		};
+		F831AF58402DCA2D7160760F31D4D742 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2CFED5477B6335FE6CA0447A014D0854;
+			remoteInfo = "ClusterWS-Client-Swift-iOS9.0";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		01EB7478B272456BD135E2C78D0DEF55 /* UIView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Extensions.swift"; path = "Sources/Extensions/UIView+Extensions.swift"; sourceTree = "<group>"; };
+		055E342DCFBC3337B4D8FF75F780F15B /* MessageKit+Availability.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MessageKit+Availability.swift"; path = "Sources/Supporting/MessageKit+Availability.swift"; sourceTree = "<group>"; };
+		0583F5576A8EE7F0B2763DB542632CB0 /* MessageInputBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageInputBar.swift; path = Sources/Views/MessageInputBar.swift; sourceTree = "<group>"; };
+		0954E67C277F203536345EF0FDF751A9 /* Pods-CWSTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CWSTests-umbrella.h"; sourceTree = "<group>"; };
+		09893EE78FAC484DA18C01C512071892 /* CWSParser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CWSParser.swift; path = Sources/CWSParser.swift; sourceTree = "<group>"; };
+		0CA41ACF226A49DC63A3E3D0452AD9CD /* MessageIntermediateLayoutAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageIntermediateLayoutAttributes.swift; path = Sources/Layout/MessageIntermediateLayoutAttributes.swift; sourceTree = "<group>"; };
+		15C7BBB5D625F3408AC6C941905A2250 /* Pods-CWSTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CWSTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		173958EB49EB73C875D161C7765220E6 /* ClusterWS.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ClusterWS.swift; path = Sources/ClusterWS.swift; sourceTree = "<group>"; };
+		18A8DF17416A72F217DDE0718ADC0B3D /* MessageKitError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageKitError.swift; path = Sources/Models/MessageKitError.swift; sourceTree = "<group>"; };
+		1B1F066CC73F2241F1A7CB846B133EAA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BF71E8C9212F03B05FB91FF924F6E29 /* ClusterWS-Client-Swift-iOS9.0-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ClusterWS-Client-Swift-iOS9.0-umbrella.h"; path = "../ClusterWS-Client-Swift-iOS9.0/ClusterWS-Client-Swift-iOS9.0-umbrella.h"; sourceTree = "<group>"; };
+		1CA5948F9D2D0C02886373B0C2A90ABF /* CWSErrors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CWSErrors.swift; path = Sources/CWSErrors.swift; sourceTree = "<group>"; };
+		1FB45445232EBE1A02D5ACB1FF002E8A /* Avatar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Avatar.swift; path = Sources/Models/Avatar.swift; sourceTree = "<group>"; };
+		235EA78107AB9B4426382EDF998F4597 /* SeparatorLine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SeparatorLine.swift; path = Sources/Views/SeparatorLine.swift; sourceTree = "<group>"; };
+		23BDF9DC9DC93024CCA4D5050CEFFF4F /* MessageContainerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageContainerView.swift; path = Sources/Views/MessageContainerView.swift; sourceTree = "<group>"; };
+		24D31F1E805E373AC0BFF4EE33F4357B /* CWSDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CWSDelegate.swift; path = Sources/CWSDelegate.swift; sourceTree = "<group>"; };
+		2599DD8996C8F06C220C08C68E7FC250 /* Pods-CWSChat.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CWSChat.modulemap"; sourceTree = "<group>"; };
+		25AB0E6FF3A8AD647277A59F8219CE8E /* MessageCellDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageCellDelegate.swift; path = Sources/Protocols/MessageCellDelegate.swift; sourceTree = "<group>"; };
+		260909427182B09756236BD8BAF05173 /* LocationMessageSnapshotOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocationMessageSnapshotOptions.swift; path = Sources/Models/LocationMessageSnapshotOptions.swift; sourceTree = "<group>"; };
+		27FDA7858ACDE9DEB538B886201BE85E /* Pods-CWSTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CWSTests-dummy.m"; sourceTree = "<group>"; };
+		288AEDC625FD394A1F968E887EC84A9A /* Pods_CWSChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CWSChat.framework; path = "Pods-CWSChat.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E89EFAEBFA1FCD36B5C445F73123416 /* MessageHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageHeaderView.swift; path = "Sources/Views/Headers & Footers/MessageHeaderView.swift"; sourceTree = "<group>"; };
+		302E56B5C6A7E86C273435649D33F4D5 /* MessageStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageStyle.swift; path = Sources/Models/MessageStyle.swift; sourceTree = "<group>"; };
+		33E8C2741CFB791417E28AA817CEE1F6 /* NSConstraintLayoutSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NSConstraintLayoutSet.swift; path = Sources/Models/NSConstraintLayoutSet.swift; sourceTree = "<group>"; };
+		36A9395F33C74332AD5BB3DE1C2A27F9 /* ClusterWS-Client-Swift-iOS9.0-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "ClusterWS-Client-Swift-iOS9.0-prefix.pch"; path = "../ClusterWS-Client-Swift-iOS9.0/ClusterWS-Client-Swift-iOS9.0-prefix.pch"; sourceTree = "<group>"; };
+		3D51F7F3D355A35E0CCE651BA8BB16C6 /* MessagesDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessagesDataSource.swift; path = Sources/Protocols/MessagesDataSource.swift; sourceTree = "<group>"; };
+		3F21CF8BAC9F191353D9D1587F1AE41D /* CWSChannel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CWSChannel.swift; path = Sources/CWSChannel.swift; sourceTree = "<group>"; };
+		4001742FDC795DC38100AF0F71C60BEE /* ClusterWS-Client-Swift-iOS11.0-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ClusterWS-Client-Swift-iOS11.0-prefix.pch"; sourceTree = "<group>"; };
+		404595B0F022D43333F1174CDADE577E /* CWSReconnection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CWSReconnection.swift; path = Sources/CWSReconnection.swift; sourceTree = "<group>"; };
+		44B9A7FD0080CDF689CA785193F21D9D /* AvatarPosition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AvatarPosition.swift; path = Sources/Models/AvatarPosition.swift; sourceTree = "<group>"; };
+		45D7D005B1F214C897B91F57439E4284 /* MessageLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageLabel.swift; path = Sources/Views/MessageLabel.swift; sourceTree = "<group>"; };
+		495EFC8879560A2A93D95D1E5D7D0915 /* Pods_CWSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CWSTests.framework; path = "Pods-CWSTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49CC7BF88D84C7BBBE3D82B9BFCDF498 /* ClusterWS-Client-Swift-iOS9.0.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "ClusterWS-Client-Swift-iOS9.0.modulemap"; path = "../ClusterWS-Client-Swift-iOS9.0/ClusterWS-Client-Swift-iOS9.0.modulemap"; sourceTree = "<group>"; };
+		4AB27C7BE0063AAA7AE41D78945D5D63 /* MessageKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MessageKit-prefix.pch"; sourceTree = "<group>"; };
+		4FD1CC6B2BA6B7C42666B5C750F3203E /* MediaMessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MediaMessageCell.swift; path = Sources/Views/Cells/MediaMessageCell.swift; sourceTree = "<group>"; };
+		50FB7ED8EA5077D42E0C129CD43339DF /* Pods-CWSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CWSTests.release.xcconfig"; sourceTree = "<group>"; };
+		51ACF92F53C7C70E779875094580C431 /* MessageFooterView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageFooterView.swift; path = "Sources/Views/Headers & Footers/MessageFooterView.swift"; sourceTree = "<group>"; };
+		53254851242EBDBAC3B60B9C37CD931C /* Pods-CWSChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CWSChat.debug.xcconfig"; sourceTree = "<group>"; };
+		540C0952F229C82D8544225AF7B43B93 /* MessageKitAssets.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = MessageKitAssets.bundle; path = MessageKitAssets.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		57725AF78018456ABE1808EC75220DD7 /* ClusterWS-Client-Swift-iOS11.0.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "ClusterWS-Client-Swift-iOS11.0.xcconfig"; sourceTree = "<group>"; };
+		5CE1BDDBAFE1A59472A2E15A02DEF938 /* CGRect+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "CGRect+Extensions.swift"; path = "Sources/Extensions/CGRect+Extensions.swift"; sourceTree = "<group>"; };
+		5D5A814377D48279277A3C8DBE24F302 /* MessageKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MessageKit-dummy.m"; sourceTree = "<group>"; };
+		62200925BB93BFA0D6578D7BFAFDCA5E /* MessageLabelDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageLabelDelegate.swift; path = Sources/Protocols/MessageLabelDelegate.swift; sourceTree = "<group>"; };
+		62A3703DAFADF4CEF6BE34D66A32C6C9 /* InputTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InputTextView.swift; path = Sources/Views/InputTextView.swift; sourceTree = "<group>"; };
+		62B3CDC680207F2426BAA76B41117532 /* Images */ = {isa = PBXFileReference; includeInIndex = 1; name = Images; path = Assets/MessageKitAssets.bundle/Images; sourceTree = "<group>"; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		67D4B5E8A3E5E2BD2D2525CA99D5ED48 /* MessagesViewController+Menu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MessagesViewController+Menu.swift"; path = "Sources/Controllers/MessagesViewController+Menu.swift"; sourceTree = "<group>"; };
+		69186EB3ACD4360667CA6340B1312143 /* MessagesViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessagesViewController.swift; path = Sources/Controllers/MessagesViewController.swift; sourceTree = "<group>"; };
+		693EAFC91B3020E4E75F9BE07983B3CA /* Pods-CWSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CWSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6D45B1AB3ACFEA13B8E81582CE058F03 /* Pods-CWSTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CWSTests.modulemap"; sourceTree = "<group>"; };
+		734BAB6C83A64D61C7CFFDFB17487256 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		747D128B439F73A8E2000A7DE2E4F681 /* Pods-CWSTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CWSTests-resources.sh"; sourceTree = "<group>"; };
+		76B2B97F1A8F2574A51BCC8A8B6C664D /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageCollectionViewCell.swift; path = Sources/Views/Cells/MessageCollectionViewCell.swift; sourceTree = "<group>"; };
+		7AF5283E3CBD54272ABC134EF2D6CCBC /* ClusterWS-Client-Swift-iOS9.0-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "ClusterWS-Client-Swift-iOS9.0-dummy.m"; path = "../ClusterWS-Client-Swift-iOS9.0/ClusterWS-Client-Swift-iOS9.0-dummy.m"; sourceTree = "<group>"; };
+		7CD0832BA3CF2188470EBB8D15B5D739 /* CWSPing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CWSPing.swift; path = Sources/CWSPing.swift; sourceTree = "<group>"; };
+		7D5C1E437FAB1BC672A5782DC844CFCE /* MessagesViewController+Keyboard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MessagesViewController+Keyboard.swift"; path = "Sources/Controllers/MessagesViewController+Keyboard.swift"; sourceTree = "<group>"; };
+		806172FDDB7E785B5D8C5FFD88BA622C /* MessagesCollectionView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessagesCollectionView.swift; path = Sources/Views/MessagesCollectionView.swift; sourceTree = "<group>"; };
+		8133F0FEEBB43066C29BFB3B9C0DD4DE /* Pods-CWSChat-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CWSChat-acknowledgements.plist"; sourceTree = "<group>"; };
+		81AEF20917E3402CFE584836E8F48C9B /* UIColor+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Extensions.swift"; path = "Sources/Extensions/UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		8B4A024DF21AFD723AC72475D023A8B7 /* DetectorType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DetectorType.swift; path = Sources/Models/DetectorType.swift; sourceTree = "<group>"; };
+		8C1570E49BA8C657066B3FA7CED97103 /* MessageData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageData.swift; path = Sources/Models/MessageData.swift; sourceTree = "<group>"; };
+		8E4E33AEC5FE537D20CE3DC168C73F4D /* MessageKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MessageKit-umbrella.h"; sourceTree = "<group>"; };
+		9130D723598914675E90FA556C038C73 /* MessagesCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessagesCollectionViewFlowLayout.swift; path = Sources/Layout/MessagesCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93B2F293AC54B92315D37F23320348D8 /* MessagesViewController+DataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MessagesViewController+DataSource.swift"; path = "Sources/Controllers/MessagesViewController+DataSource.swift"; sourceTree = "<group>"; };
+		9551D1347E86DC81CC7CED9E8679DD33 /* MessageKitDateFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageKitDateFormatter.swift; path = Sources/Models/MessageKitDateFormatter.swift; sourceTree = "<group>"; };
+		955F4C114F81E5A6DBE6CC9BE0984729 /* CWSEmitter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CWSEmitter.swift; path = Sources/CWSEmitter.swift; sourceTree = "<group>"; };
+		969FAC1229EFF1EAF645A9A7B3297635 /* WebSocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = Sources/WebSocket.swift; sourceTree = "<group>"; };
+		9ACBF4693DC47C17D07E32DAF6777DB0 /* Pods-CWSChat-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CWSChat-resources.sh"; sourceTree = "<group>"; };
+		9D76B5164210BA9D8D874E6CA5AE8962 /* Pods-CWSTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CWSTests-frameworks.sh"; sourceTree = "<group>"; };
+		9F5E46BDA818484DB248BEEBD8AFE6A2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../ClusterWS-Client-Swift-iOS9.0/Info.plist"; sourceTree = "<group>"; };
+		A1F89485A56784B48831FF8F7F6EFFFD /* MessagesCollectionViewLayoutAttributes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessagesCollectionViewLayoutAttributes.swift; path = Sources/Layout/MessagesCollectionViewLayoutAttributes.swift; sourceTree = "<group>"; };
+		A6076DC423AA27296EFEEE5D0F306242 /* MessagesDisplayDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessagesDisplayDelegate.swift; path = Sources/Protocols/MessagesDisplayDelegate.swift; sourceTree = "<group>"; };
+		A70D5A9DC1BC02414E48EE56792AAA25 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Bundle+Extensions.swift"; path = "Sources/Extensions/Bundle+Extensions.swift"; sourceTree = "<group>"; };
+		A830555E6DE3243AE6CA101C09A2D957 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC22E8589DA8DC4BCFF55AF923FB98DE /* ClusterWS_Client_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ClusterWS_Client_Swift.framework; path = "ClusterWS-Client-Swift-iOS11.0.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0A8C63CDF548543130AC43264A3387E /* MessageDateHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageDateHeaderView.swift; path = "Sources/Views/Headers & Footers/MessageDateHeaderView.swift"; sourceTree = "<group>"; };
+		B427B197851DC327CB94367F5A2A9DD0 /* Sender.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sender.swift; path = Sources/Models/Sender.swift; sourceTree = "<group>"; };
+		B43551C98F6A5CDE18AFF57E71D546F6 /* LabelAlignment.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LabelAlignment.swift; path = Sources/Models/LabelAlignment.swift; sourceTree = "<group>"; };
+		B4FCE75F91C474BC4A2F1A86175923FF /* ClusterWS_Client_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ClusterWS_Client_Swift.framework; path = "ClusterWS-Client-Swift-iOS9.0.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6146A928A5CE7B2DAD6C0EBE4A1544F /* LocationMessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LocationMessageCell.swift; path = Sources/Views/Cells/LocationMessageCell.swift; sourceTree = "<group>"; };
+		BA01CA0EA66CF639339564EA00B581F1 /* Pods-CWSChat-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CWSChat-dummy.m"; sourceTree = "<group>"; };
+		BB642E46E426BD16C80FCF23BEE3B159 /* MessageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MessageKit.framework; path = MessageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB6639B87CC5C9C673F722E08858E007 /* InputStackView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InputStackView.swift; path = Sources/Views/InputStackView.swift; sourceTree = "<group>"; };
+		BBD2C7A99AAA2470346464D474EDD116 /* MessagesViewController+Delegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MessagesViewController+Delegate.swift"; path = "Sources/Controllers/MessagesViewController+Delegate.swift"; sourceTree = "<group>"; };
+		BD0B59656D0528342FB0BC56B27148B2 /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSAttributedString+Extensions.swift"; path = "Sources/Extensions/NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
+		C45636E25FA439F05DFC3123EF34B6B0 /* Pods-CWSChat-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CWSChat-frameworks.sh"; sourceTree = "<group>"; };
+		C9CE3307671F575BB52124550215BD7D /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UICollectionView+Extensions.swift"; path = "Sources/Extensions/UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		CC88CC27D16CFF93547449BC65FE12A3 /* TextMessageCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextMessageCell.swift; path = Sources/Views/Cells/TextMessageCell.swift; sourceTree = "<group>"; };
+		CCA88B3325F3586A7D2298464ECFDF51 /* MessageKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MessageKit.xcconfig; sourceTree = "<group>"; };
+		D2EEAF16351DF3B0F3F15DA7836C835B /* MessageType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageType.swift; path = Sources/Protocols/MessageType.swift; sourceTree = "<group>"; };
+		D6C681BD87DAAD57D4A21015AE194CC3 /* ClusterWS-Client-Swift-iOS11.0.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "ClusterWS-Client-Swift-iOS11.0.modulemap"; sourceTree = "<group>"; };
+		E15C49151C5BA081E2B9AFA007FEDE99 /* ClusterWS-Client-Swift-iOS11.0-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ClusterWS-Client-Swift-iOS11.0-umbrella.h"; sourceTree = "<group>"; };
+		E1AD3C0FA2F67C80915EF89940147A6E /* ClusterWS-Client-Swift-iOS11.0-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ClusterWS-Client-Swift-iOS11.0-dummy.m"; sourceTree = "<group>"; };
+		E1C221483BE06DCB330FD682A9095088 /* PlayButtonView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PlayButtonView.swift; path = Sources/Views/PlayButtonView.swift; sourceTree = "<group>"; };
+		E6729AFE84131BB0D6013E04BEA7B1E0 /* InputBarItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InputBarItem.swift; path = Sources/Views/InputBarItem.swift; sourceTree = "<group>"; };
+		EA0BDE82FC0AD29A5D3EC5B5AC7716F8 /* AvatarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AvatarView.swift; path = Sources/Views/AvatarView.swift; sourceTree = "<group>"; };
+		EC5AC451A84C3C2CCDD94223238B4960 /* Pods-CWSChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CWSChat.release.xcconfig"; sourceTree = "<group>"; };
+		ECB99FDE9A5C4CECDEEFABAC3A919203 /* MessageKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = MessageKit.modulemap; sourceTree = "<group>"; };
+		EDCD8FCCB535F5AE2413C533C3637EEA /* Pods-CWSTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CWSTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		EE0C00F082FD26474C7C9427D269B7F1 /* Pods-CWSChat-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CWSChat-acknowledgements.markdown"; sourceTree = "<group>"; };
+		EEC01E69793C13BDA1D0AD942E39733F /* MessageInputBarDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessageInputBarDelegate.swift; path = Sources/Protocols/MessageInputBarDelegate.swift; sourceTree = "<group>"; };
+		F3D084D6192E7C2F6E31B6E5DE882676 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F42CAB86681072DB6A5445810950029A /* String+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Extensions.swift"; path = "Sources/Extensions/String+Extensions.swift"; sourceTree = "<group>"; };
+		F4FF4E05F9B290EC267AF395CF382D61 /* Pods-CWSChat-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CWSChat-umbrella.h"; sourceTree = "<group>"; };
+		F96E20AEC7C789BA321292B65E5DB65C /* ResourceBundle-MessageKitAssets-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-MessageKitAssets-Info.plist"; sourceTree = "<group>"; };
+		FA896E490B6120E2B97403097DB814CF /* MessagesLayoutDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MessagesLayoutDelegate.swift; path = Sources/Protocols/MessagesLayoutDelegate.swift; sourceTree = "<group>"; };
+		FF667310D7906AD3D765D1284F2B5E43 /* ClusterWS-Client-Swift-iOS9.0.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "ClusterWS-Client-Swift-iOS9.0.xcconfig"; path = "../ClusterWS-Client-Swift-iOS9.0/ClusterWS-Client-Swift-iOS9.0.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03E42E88DFD08D226CA5AF825DB2558F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DF2AA3B7C478456FA471A260E601AF1E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E2D66A29341B0386B3CB54AE2F79946 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0932BA186BEDA961370B7BEB8F1D57E5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		43998BE8AD5AEBB10E29F0E9F7F40208 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6ACEE587A431F483BA6ECF0641739C9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5638C788DC760821F82402AFD3B0B683 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9EE0BBD37B8C3A6BA39628A9581ACE53 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8771B119ED0212E24927AA997390E7B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB42747A30A2C9FC39A398F2BA6257E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50F943A4CA2C7E84E3488425669D29BB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A33E1629B961857AC0C3E41E8B3A28F /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EDDDEB914FCCD903F4DD5982F972D298 /* Pods-CWSChat */,
+				BE6AA4029C2DC4AC02E19C91473354CF /* Pods-CWSTests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		3A4966F68CFA8A16EB1E884DB8BF9A66 /* ClusterWS-Client-Swift */ = {
+			isa = PBXGroup;
+			children = (
+				173958EB49EB73C875D161C7765220E6 /* ClusterWS.swift */,
+				3F21CF8BAC9F191353D9D1587F1AE41D /* CWSChannel.swift */,
+				24D31F1E805E373AC0BFF4EE33F4357B /* CWSDelegate.swift */,
+				955F4C114F81E5A6DBE6CC9BE0984729 /* CWSEmitter.swift */,
+				1CA5948F9D2D0C02886373B0C2A90ABF /* CWSErrors.swift */,
+				09893EE78FAC484DA18C01C512071892 /* CWSParser.swift */,
+				7CD0832BA3CF2188470EBB8D15B5D739 /* CWSPing.swift */,
+				404595B0F022D43333F1174CDADE577E /* CWSReconnection.swift */,
+				969FAC1229EFF1EAF645A9A7B3297635 /* WebSocket.swift */,
+				C7214B520031FC17CD6279243CB71C3E /* Support Files */,
+			);
+			name = "ClusterWS-Client-Swift";
+			path = "ClusterWS-Client-Swift";
+			sourceTree = "<group>";
+		};
+		64846F4439A551A879FCB5A6025DA5E8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				62B3CDC680207F2426BAA76B41117532 /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		6BBEA1C359335B79CA21AA52A57133F9 /* MessageKit */ = {
+			isa = PBXGroup;
+			children = (
+				1FB45445232EBE1A02D5ACB1FF002E8A /* Avatar.swift */,
+				44B9A7FD0080CDF689CA785193F21D9D /* AvatarPosition.swift */,
+				EA0BDE82FC0AD29A5D3EC5B5AC7716F8 /* AvatarView.swift */,
+				A70D5A9DC1BC02414E48EE56792AAA25 /* Bundle+Extensions.swift */,
+				5CE1BDDBAFE1A59472A2E15A02DEF938 /* CGRect+Extensions.swift */,
+				8B4A024DF21AFD723AC72475D023A8B7 /* DetectorType.swift */,
+				E6729AFE84131BB0D6013E04BEA7B1E0 /* InputBarItem.swift */,
+				BB6639B87CC5C9C673F722E08858E007 /* InputStackView.swift */,
+				62A3703DAFADF4CEF6BE34D66A32C6C9 /* InputTextView.swift */,
+				B43551C98F6A5CDE18AFF57E71D546F6 /* LabelAlignment.swift */,
+				B6146A928A5CE7B2DAD6C0EBE4A1544F /* LocationMessageCell.swift */,
+				260909427182B09756236BD8BAF05173 /* LocationMessageSnapshotOptions.swift */,
+				4FD1CC6B2BA6B7C42666B5C750F3203E /* MediaMessageCell.swift */,
+				25AB0E6FF3A8AD647277A59F8219CE8E /* MessageCellDelegate.swift */,
+				76B2B97F1A8F2574A51BCC8A8B6C664D /* MessageCollectionViewCell.swift */,
+				23BDF9DC9DC93024CCA4D5050CEFFF4F /* MessageContainerView.swift */,
+				8C1570E49BA8C657066B3FA7CED97103 /* MessageData.swift */,
+				B0A8C63CDF548543130AC43264A3387E /* MessageDateHeaderView.swift */,
+				51ACF92F53C7C70E779875094580C431 /* MessageFooterView.swift */,
+				2E89EFAEBFA1FCD36B5C445F73123416 /* MessageHeaderView.swift */,
+				0583F5576A8EE7F0B2763DB542632CB0 /* MessageInputBar.swift */,
+				EEC01E69793C13BDA1D0AD942E39733F /* MessageInputBarDelegate.swift */,
+				0CA41ACF226A49DC63A3E3D0452AD9CD /* MessageIntermediateLayoutAttributes.swift */,
+				055E342DCFBC3337B4D8FF75F780F15B /* MessageKit+Availability.swift */,
+				9551D1347E86DC81CC7CED9E8679DD33 /* MessageKitDateFormatter.swift */,
+				18A8DF17416A72F217DDE0718ADC0B3D /* MessageKitError.swift */,
+				45D7D005B1F214C897B91F57439E4284 /* MessageLabel.swift */,
+				62200925BB93BFA0D6578D7BFAFDCA5E /* MessageLabelDelegate.swift */,
+				806172FDDB7E785B5D8C5FFD88BA622C /* MessagesCollectionView.swift */,
+				9130D723598914675E90FA556C038C73 /* MessagesCollectionViewFlowLayout.swift */,
+				A1F89485A56784B48831FF8F7F6EFFFD /* MessagesCollectionViewLayoutAttributes.swift */,
+				3D51F7F3D355A35E0CCE651BA8BB16C6 /* MessagesDataSource.swift */,
+				A6076DC423AA27296EFEEE5D0F306242 /* MessagesDisplayDelegate.swift */,
+				FA896E490B6120E2B97403097DB814CF /* MessagesLayoutDelegate.swift */,
+				302E56B5C6A7E86C273435649D33F4D5 /* MessageStyle.swift */,
+				69186EB3ACD4360667CA6340B1312143 /* MessagesViewController.swift */,
+				93B2F293AC54B92315D37F23320348D8 /* MessagesViewController+DataSource.swift */,
+				BBD2C7A99AAA2470346464D474EDD116 /* MessagesViewController+Delegate.swift */,
+				7D5C1E437FAB1BC672A5782DC844CFCE /* MessagesViewController+Keyboard.swift */,
+				67D4B5E8A3E5E2BD2D2525CA99D5ED48 /* MessagesViewController+Menu.swift */,
+				D2EEAF16351DF3B0F3F15DA7836C835B /* MessageType.swift */,
+				BD0B59656D0528342FB0BC56B27148B2 /* NSAttributedString+Extensions.swift */,
+				33E8C2741CFB791417E28AA817CEE1F6 /* NSConstraintLayoutSet.swift */,
+				E1C221483BE06DCB330FD682A9095088 /* PlayButtonView.swift */,
+				B427B197851DC327CB94367F5A2A9DD0 /* Sender.swift */,
+				235EA78107AB9B4426382EDF998F4597 /* SeparatorLine.swift */,
+				F42CAB86681072DB6A5445810950029A /* String+Extensions.swift */,
+				CC88CC27D16CFF93547449BC65FE12A3 /* TextMessageCell.swift */,
+				C9CE3307671F575BB52124550215BD7D /* UICollectionView+Extensions.swift */,
+				81AEF20917E3402CFE584836E8F48C9B /* UIColor+Extensions.swift */,
+				01EB7478B272456BD135E2C78D0DEF55 /* UIView+Extensions.swift */,
+				64846F4439A551A879FCB5A6025DA5E8 /* Resources */,
+				C7260E22C30DB9E80A6D68C770D760FB /* Support Files */,
+			);
+			name = MessageKit;
+			path = MessageKit;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				A22A01778BA829924E739BF3E3F52E42 /* Pods */,
+				F6DA3325AE0C9FA5924AB317458080A7 /* Products */,
+				3A33E1629B961857AC0C3E41E8B3A28F /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		A22A01778BA829924E739BF3E3F52E42 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A4966F68CFA8A16EB1E884DB8BF9A66 /* ClusterWS-Client-Swift */,
+				6BBEA1C359335B79CA21AA52A57133F9 /* MessageKit */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BE6AA4029C2DC4AC02E19C91473354CF /* Pods-CWSTests */ = {
+			isa = PBXGroup;
+			children = (
+				A830555E6DE3243AE6CA101C09A2D957 /* Info.plist */,
+				6D45B1AB3ACFEA13B8E81582CE058F03 /* Pods-CWSTests.modulemap */,
+				15C7BBB5D625F3408AC6C941905A2250 /* Pods-CWSTests-acknowledgements.markdown */,
+				EDCD8FCCB535F5AE2413C533C3637EEA /* Pods-CWSTests-acknowledgements.plist */,
+				27FDA7858ACDE9DEB538B886201BE85E /* Pods-CWSTests-dummy.m */,
+				9D76B5164210BA9D8D874E6CA5AE8962 /* Pods-CWSTests-frameworks.sh */,
+				747D128B439F73A8E2000A7DE2E4F681 /* Pods-CWSTests-resources.sh */,
+				0954E67C277F203536345EF0FDF751A9 /* Pods-CWSTests-umbrella.h */,
+				693EAFC91B3020E4E75F9BE07983B3CA /* Pods-CWSTests.debug.xcconfig */,
+				50FB7ED8EA5077D42E0C129CD43339DF /* Pods-CWSTests.release.xcconfig */,
+			);
+			name = "Pods-CWSTests";
+			path = "Target Support Files/Pods-CWSTests";
+			sourceTree = "<group>";
+		};
+		C7214B520031FC17CD6279243CB71C3E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D6C681BD87DAAD57D4A21015AE194CC3 /* ClusterWS-Client-Swift-iOS11.0.modulemap */,
+				57725AF78018456ABE1808EC75220DD7 /* ClusterWS-Client-Swift-iOS11.0.xcconfig */,
+				E1AD3C0FA2F67C80915EF89940147A6E /* ClusterWS-Client-Swift-iOS11.0-dummy.m */,
+				4001742FDC795DC38100AF0F71C60BEE /* ClusterWS-Client-Swift-iOS11.0-prefix.pch */,
+				E15C49151C5BA081E2B9AFA007FEDE99 /* ClusterWS-Client-Swift-iOS11.0-umbrella.h */,
+				49CC7BF88D84C7BBBE3D82B9BFCDF498 /* ClusterWS-Client-Swift-iOS9.0.modulemap */,
+				FF667310D7906AD3D765D1284F2B5E43 /* ClusterWS-Client-Swift-iOS9.0.xcconfig */,
+				7AF5283E3CBD54272ABC134EF2D6CCBC /* ClusterWS-Client-Swift-iOS9.0-dummy.m */,
+				36A9395F33C74332AD5BB3DE1C2A27F9 /* ClusterWS-Client-Swift-iOS9.0-prefix.pch */,
+				1BF71E8C9212F03B05FB91FF924F6E29 /* ClusterWS-Client-Swift-iOS9.0-umbrella.h */,
+				9F5E46BDA818484DB248BEEBD8AFE6A2 /* Info.plist */,
+				F3D084D6192E7C2F6E31B6E5DE882676 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ClusterWS-Client-Swift-iOS11.0";
+			sourceTree = "<group>";
+		};
+		C7260E22C30DB9E80A6D68C770D760FB /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				734BAB6C83A64D61C7CFFDFB17487256 /* Info.plist */,
+				ECB99FDE9A5C4CECDEEFABAC3A919203 /* MessageKit.modulemap */,
+				CCA88B3325F3586A7D2298464ECFDF51 /* MessageKit.xcconfig */,
+				5D5A814377D48279277A3C8DBE24F302 /* MessageKit-dummy.m */,
+				4AB27C7BE0063AAA7AE41D78945D5D63 /* MessageKit-prefix.pch */,
+				8E4E33AEC5FE537D20CE3DC168C73F4D /* MessageKit-umbrella.h */,
+				F96E20AEC7C789BA321292B65E5DB65C /* ResourceBundle-MessageKitAssets-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MessageKit";
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		EDDDEB914FCCD903F4DD5982F972D298 /* Pods-CWSChat */ = {
+			isa = PBXGroup;
+			children = (
+				1B1F066CC73F2241F1A7CB846B133EAA /* Info.plist */,
+				2599DD8996C8F06C220C08C68E7FC250 /* Pods-CWSChat.modulemap */,
+				EE0C00F082FD26474C7C9427D269B7F1 /* Pods-CWSChat-acknowledgements.markdown */,
+				8133F0FEEBB43066C29BFB3B9C0DD4DE /* Pods-CWSChat-acknowledgements.plist */,
+				BA01CA0EA66CF639339564EA00B581F1 /* Pods-CWSChat-dummy.m */,
+				C45636E25FA439F05DFC3123EF34B6B0 /* Pods-CWSChat-frameworks.sh */,
+				9ACBF4693DC47C17D07E32DAF6777DB0 /* Pods-CWSChat-resources.sh */,
+				F4FF4E05F9B290EC267AF395CF382D61 /* Pods-CWSChat-umbrella.h */,
+				53254851242EBDBAC3B60B9C37CD931C /* Pods-CWSChat.debug.xcconfig */,
+				EC5AC451A84C3C2CCDD94223238B4960 /* Pods-CWSChat.release.xcconfig */,
+			);
+			name = "Pods-CWSChat";
+			path = "Target Support Files/Pods-CWSChat";
+			sourceTree = "<group>";
+		};
+		F6DA3325AE0C9FA5924AB317458080A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC22E8589DA8DC4BCFF55AF923FB98DE /* ClusterWS_Client_Swift.framework */,
+				B4FCE75F91C474BC4A2F1A86175923FF /* ClusterWS_Client_Swift.framework */,
+				BB642E46E426BD16C80FCF23BEE3B159 /* MessageKit.framework */,
+				540C0952F229C82D8544225AF7B43B93 /* MessageKitAssets.bundle */,
+				288AEDC625FD394A1F968E887EC84A9A /* Pods_CWSChat.framework */,
+				495EFC8879560A2A93D95D1E5D7D0915 /* Pods_CWSTests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1F7658E82AF417378D63FCF44019AD28 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD23CE4C2E6437D0AF7E567D37AAB83B /* Pods-CWSTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		38C524A3C2ADB0944467403488A9A43C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86F5877F8608ED7CB96CCFFA4B6C2917 /* MessageKit-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E4394B45435B93E2BE40C08C48DE5C4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				48A0C436ADF57F5559B5AB5DF65DFA3E /* ClusterWS-Client-Swift-iOS11.0-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8102006C0A0C45B0D22CE57BF5282604 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AB16B3940853AFCFD9973A0688C60FA9 /* ClusterWS-Client-Swift-iOS9.0-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88FA169D2B2D56E4B75F1FF0F736CCD1 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8143D078DC14B29AD20775FB73BB0C87 /* Pods-CWSChat-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2CFED5477B6335FE6CA0447A014D0854 /* ClusterWS-Client-Swift-iOS9.0 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CFFF698C30BEEBD9DBA45A4FDECAE0BC /* Build configuration list for PBXNativeTarget "ClusterWS-Client-Swift-iOS9.0" */;
+			buildPhases = (
+				F34FBD3E81AC643F7B35DC533BAB5C1F /* Sources */,
+				AB42747A30A2C9FC39A398F2BA6257E9 /* Frameworks */,
+				8102006C0A0C45B0D22CE57BF5282604 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ClusterWS-Client-Swift-iOS9.0";
+			productName = "ClusterWS-Client-Swift-iOS9.0";
+			productReference = B4FCE75F91C474BC4A2F1A86175923FF /* ClusterWS_Client_Swift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4BCD1F001D84ABAC7E1585BE4F1721E6 /* MessageKit-MessageKitAssets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6AEE8CADC96ED42A1453D0170E63C9EC /* Build configuration list for PBXNativeTarget "MessageKit-MessageKitAssets" */;
+			buildPhases = (
+				861E0815ED1289A3D4A4DE03B9063D4B /* Sources */,
+				8771B119ED0212E24927AA997390E7B4 /* Frameworks */,
+				42E423DCC1DE235E2B08627960D0916E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MessageKit-MessageKitAssets";
+			productName = "MessageKit-MessageKitAssets";
+			productReference = 540C0952F229C82D8544225AF7B43B93 /* MessageKitAssets.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		7A85D9FACDBE947934FD67B206D66002 /* MessageKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5EB9644BB2997DCE5B0CFDFBF6A1D807 /* Build configuration list for PBXNativeTarget "MessageKit" */;
+			buildPhases = (
+				2AC950065ED2A36D09F0156E272F7F89 /* Sources */,
+				1E2D66A29341B0386B3CB54AE2F79946 /* Frameworks */,
+				06CBEE694F923F6D6F1829E2DE24539D /* Resources */,
+				38C524A3C2ADB0944467403488A9A43C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				54EF5E745969AC9DB7A5023499ADD4E2 /* PBXTargetDependency */,
+			);
+			name = MessageKit;
+			productName = MessageKit;
+			productReference = BB642E46E426BD16C80FCF23BEE3B159 /* MessageKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A9CEE14A517BCAD352A599570C3897CB /* ClusterWS-Client-Swift-iOS11.0 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B10B0680070BDEE4D87CF3BD1A7CD04E /* Build configuration list for PBXNativeTarget "ClusterWS-Client-Swift-iOS11.0" */;
+			buildPhases = (
+				298CC7363B1B9E6463EAD7C76A794D22 /* Sources */,
+				43998BE8AD5AEBB10E29F0E9F7F40208 /* Frameworks */,
+				5E4394B45435B93E2BE40C08C48DE5C4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ClusterWS-Client-Swift-iOS11.0";
+			productName = "ClusterWS-Client-Swift-iOS11.0";
+			productReference = AC22E8589DA8DC4BCFF55AF923FB98DE /* ClusterWS_Client_Swift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B8076D88F29B7D631D9C4885F21F653C /* Pods-CWSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91F17C6A91666ED0E02DB9E0E725A092 /* Build configuration list for PBXNativeTarget "Pods-CWSTests" */;
+			buildPhases = (
+				E44BF9788C986826D7DA6E85048F97C0 /* Sources */,
+				03E42E88DFD08D226CA5AF825DB2558F /* Frameworks */,
+				1F7658E82AF417378D63FCF44019AD28 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FC10D7B6AFD5B7BD4618B967F78A7A6F /* PBXTargetDependency */,
+			);
+			name = "Pods-CWSTests";
+			productName = "Pods-CWSTests";
+			productReference = 495EFC8879560A2A93D95D1E5D7D0915 /* Pods_CWSTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F7DFF2668900591A2C92779E02202435 /* Pods-CWSChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A59ABAFC4CAC57F17232DEBE8E6625CD /* Build configuration list for PBXNativeTarget "Pods-CWSChat" */;
+			buildPhases = (
+				6C7C72CE5F29E639BB66C4AF4890C562 /* Sources */,
+				5638C788DC760821F82402AFD3B0B683 /* Frameworks */,
+				88FA169D2B2D56E4B75F1FF0F736CCD1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1071354EE7C1176C2F3EE213FFC3333D /* PBXTargetDependency */,
+				F6664D44F77E0F03565AD498842E1A22 /* PBXTargetDependency */,
+			);
+			name = "Pods-CWSChat";
+			productName = "Pods-CWSChat";
+			productReference = 288AEDC625FD394A1F968E887EC84A9A /* Pods_CWSChat.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = F6DA3325AE0C9FA5924AB317458080A7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A9CEE14A517BCAD352A599570C3897CB /* ClusterWS-Client-Swift-iOS11.0 */,
+				2CFED5477B6335FE6CA0447A014D0854 /* ClusterWS-Client-Swift-iOS9.0 */,
+				7A85D9FACDBE947934FD67B206D66002 /* MessageKit */,
+				4BCD1F001D84ABAC7E1585BE4F1721E6 /* MessageKit-MessageKitAssets */,
+				F7DFF2668900591A2C92779E02202435 /* Pods-CWSChat */,
+				B8076D88F29B7D631D9C4885F21F653C /* Pods-CWSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		06CBEE694F923F6D6F1829E2DE24539D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C410FF160B54953D88C0BACCEB8A751 /* MessageKitAssets.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		42E423DCC1DE235E2B08627960D0916E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1B3B9B99F58A6C2B19DF67EF4F6BE09C /* Images in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		298CC7363B1B9E6463EAD7C76A794D22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE5EE66E50D20E7A270550812D755B8F /* ClusterWS-Client-Swift-iOS11.0-dummy.m in Sources */,
+				DA283E9834A89C5BFB44DCDA5F28E6D5 /* ClusterWS.swift in Sources */,
+				AC866C1B34C7F7707678F94C2BB572B7 /* CWSChannel.swift in Sources */,
+				71A10281C89350EB6692ECE0CC7C6C4B /* CWSDelegate.swift in Sources */,
+				203B335A190456B02ECDB59B8ACCA09B /* CWSEmitter.swift in Sources */,
+				87A02D3C2809F5744E520624FF3C50E2 /* CWSErrors.swift in Sources */,
+				2374E9119057BBB14156766F7584CAE5 /* CWSParser.swift in Sources */,
+				84F21FF3223E7CDAA139DCE447E65F95 /* CWSPing.swift in Sources */,
+				35B7B6780D9EBECCBF55FB2E4606FC8B /* CWSReconnection.swift in Sources */,
+				D65D69EF95752919D1F21C1DEE4C949C /* WebSocket.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2AC950065ED2A36D09F0156E272F7F89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E2E4E172F5CA704336FF7F4D6BF5991E /* Avatar.swift in Sources */,
+				8B1BB9FFCEAFBF3BB005F5706CD69C1F /* AvatarPosition.swift in Sources */,
+				718FEAC1BC90CA7E6A6690E33E096663 /* AvatarView.swift in Sources */,
+				A0A683036EF7D345A7217DF577D3D4EF /* Bundle+Extensions.swift in Sources */,
+				657C32E7F85FFE7694ED87E9549969A8 /* CGRect+Extensions.swift in Sources */,
+				D01FF5A2E257658FC35B8940238E8C0E /* DetectorType.swift in Sources */,
+				0C1C7517D7CC65A019EBD24BF4DFD772 /* InputBarItem.swift in Sources */,
+				022ACA259E9CB1C1B7E38E4CE41AA45A /* InputStackView.swift in Sources */,
+				F92586CBA92B9CC6AC6F0279469788BD /* InputTextView.swift in Sources */,
+				3A703BC5BD63F75AF13125D07ED08F11 /* LabelAlignment.swift in Sources */,
+				315D6000E288F0F2FB52939931101123 /* LocationMessageCell.swift in Sources */,
+				F6B5BB0BD81BDA64BCF349920807A17E /* LocationMessageSnapshotOptions.swift in Sources */,
+				8EBF73630A17C16AEAFFB6B0338FB85B /* MediaMessageCell.swift in Sources */,
+				E16A5C2265248AE76A3BD7797F9C9263 /* MessageCellDelegate.swift in Sources */,
+				BB3C4A54EEF4A01543C43358A139B231 /* MessageCollectionViewCell.swift in Sources */,
+				6B977264C9952A0E084F73735235675D /* MessageContainerView.swift in Sources */,
+				859AB9998D1562C150BAD7F79A228AAD /* MessageData.swift in Sources */,
+				555441BED12437F8D8DC6009CA138457 /* MessageDateHeaderView.swift in Sources */,
+				3FBC91DBB090F2BB3CCA5C5D4204562F /* MessageFooterView.swift in Sources */,
+				9461B21EA312738D18E3A33E836D1FCC /* MessageHeaderView.swift in Sources */,
+				8D9B640EC1662E21BF687906F151BB88 /* MessageInputBar.swift in Sources */,
+				2F7831E169223A1597CF4987474FDD72 /* MessageInputBarDelegate.swift in Sources */,
+				E1FDD8C533C6099BE2BFE712FDAF8B44 /* MessageIntermediateLayoutAttributes.swift in Sources */,
+				E2E9E2978130052FB7AE053CEB84E6DB /* MessageKit+Availability.swift in Sources */,
+				6345AB15B39E8336263E74D4096C9EB6 /* MessageKit-dummy.m in Sources */,
+				4D3FBB43C22E9524415F364DC15321BD /* MessageKitDateFormatter.swift in Sources */,
+				93B2361F2BF10E048EA8FD2D365BE119 /* MessageKitError.swift in Sources */,
+				2303538AD5FE90F27B21AB4E772E5A12 /* MessageLabel.swift in Sources */,
+				9B3CF63CA57B76802B28B0EFE88CD063 /* MessageLabelDelegate.swift in Sources */,
+				EAA9D149C0E25889041852087C3A2FB8 /* MessagesCollectionView.swift in Sources */,
+				77BDD8B1FDAE51F0E1B1AE6917F76E97 /* MessagesCollectionViewFlowLayout.swift in Sources */,
+				D9885D81F92158D328D8A1540D611181 /* MessagesCollectionViewLayoutAttributes.swift in Sources */,
+				E6BF78E9FDA1B8144B342AB89371B3A8 /* MessagesDataSource.swift in Sources */,
+				8078DF7BB4254A025D4191BEA4ACB3A1 /* MessagesDisplayDelegate.swift in Sources */,
+				2952B3F8141E3CFCD455885D2C9C9E52 /* MessagesLayoutDelegate.swift in Sources */,
+				8CDA656577868EDA391AD7C678DA75E6 /* MessageStyle.swift in Sources */,
+				3DDDC49FD6B4D564D9CFB5E844658F2F /* MessagesViewController+DataSource.swift in Sources */,
+				66168031205F42A1B338363F461A02FE /* MessagesViewController+Delegate.swift in Sources */,
+				4C8B86F6D40EA6E4C3078FEA6D05DF65 /* MessagesViewController+Keyboard.swift in Sources */,
+				920B6215488CF3C0A12B770C92DF5813 /* MessagesViewController+Menu.swift in Sources */,
+				4EDA06E2A1CB8FF52F934D86E96C09D8 /* MessagesViewController.swift in Sources */,
+				3DEA4B6738E5178403CA4762ECC3FBF9 /* MessageType.swift in Sources */,
+				3D0837F96FDB5B100E6F364E753CA452 /* NSAttributedString+Extensions.swift in Sources */,
+				BDE7B87C57C46C3EE98FB9DCE74146B8 /* NSConstraintLayoutSet.swift in Sources */,
+				F356D48759943D5D31EE75E3F9B2CCE3 /* PlayButtonView.swift in Sources */,
+				4DC68D48D295541687B3DDBD1B5ACF4E /* Sender.swift in Sources */,
+				24961BD796F31183E062781E57908EE6 /* SeparatorLine.swift in Sources */,
+				00C429D200C0C388329D008721A58BA2 /* String+Extensions.swift in Sources */,
+				6BF5D222C18353CE4D5AA46679C3CF02 /* TextMessageCell.swift in Sources */,
+				CBC7151EF67C314CD47458593D0A2EEA /* UICollectionView+Extensions.swift in Sources */,
+				E0A00E56A3849A6C031BB939FFB75108 /* UIColor+Extensions.swift in Sources */,
+				C4D283D84D3B08240213F6BD29B45131 /* UIView+Extensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6C7C72CE5F29E639BB66C4AF4890C562 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D1C0976ED566A4B92141B40022034E8C /* Pods-CWSChat-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		861E0815ED1289A3D4A4DE03B9063D4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E44BF9788C986826D7DA6E85048F97C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				716E2245B3274DADD1DD16F2CCAF1A78 /* Pods-CWSTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F34FBD3E81AC643F7B35DC533BAB5C1F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A1347CAD10A61055AFA4632DA2C18DC /* ClusterWS-Client-Swift-iOS9.0-dummy.m in Sources */,
+				F0648CA801794AF8E08501AB9698012B /* ClusterWS.swift in Sources */,
+				E989CD2313A27526326786A20C343B03 /* CWSChannel.swift in Sources */,
+				D4614727D4517C3B6174D7132F3A1897 /* CWSDelegate.swift in Sources */,
+				AB4A3678D440E6FF6D5F595F7DF75518 /* CWSEmitter.swift in Sources */,
+				DF9338F744AB32A315908DAE5DF5D368 /* CWSErrors.swift in Sources */,
+				419F93B8BF2B80A23C21B26C285C7EB6 /* CWSParser.swift in Sources */,
+				FF503797BE83E7D3D07E8B405CD3FB69 /* CWSPing.swift in Sources */,
+				3B8D63067B71BD90B48AC1BE021EFA13 /* CWSReconnection.swift in Sources */,
+				4A44778FD197D14BE28E32885F8F3FED /* WebSocket.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1071354EE7C1176C2F3EE213FFC3333D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ClusterWS-Client-Swift-iOS9.0";
+			target = 2CFED5477B6335FE6CA0447A014D0854 /* ClusterWS-Client-Swift-iOS9.0 */;
+			targetProxy = F831AF58402DCA2D7160760F31D4D742 /* PBXContainerItemProxy */;
+		};
+		54EF5E745969AC9DB7A5023499ADD4E2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "MessageKit-MessageKitAssets";
+			target = 4BCD1F001D84ABAC7E1585BE4F1721E6 /* MessageKit-MessageKitAssets */;
+			targetProxy = 6BB72DDC2ED315028A7325F5421AB5D4 /* PBXContainerItemProxy */;
+		};
+		F6664D44F77E0F03565AD498842E1A22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MessageKit;
+			target = 7A85D9FACDBE947934FD67B206D66002 /* MessageKit */;
+			targetProxy = 3B9B4E0DA4C8791C90A2AAFA312F6AC9 /* PBXContainerItemProxy */;
+		};
+		FC10D7B6AFD5B7BD4618B967F78A7A6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ClusterWS-Client-Swift-iOS11.0";
+			target = A9CEE14A517BCAD352A599570C3897CB /* ClusterWS-Client-Swift-iOS11.0 */;
+			targetProxy = 60430EBEA2DFDE7A80A8A9BA807A763A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		15D4101347884E32F69307FBAD2D3DA6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57725AF78018456ABE1808EC75220DD7 /* ClusterWS-Client-Swift-iOS11.0.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ClusterWS-Client-Swift-iOS11.0/ClusterWS-Client-Swift-iOS11.0-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ClusterWS-Client-Swift-iOS11.0/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ClusterWS-Client-Swift-iOS11.0/ClusterWS-Client-Swift-iOS11.0.modulemap";
+				PRODUCT_NAME = ClusterWS_Client_Swift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1802F7F0B503A656DDCD626EAFB5DF50 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF667310D7906AD3D765D1284F2B5E43 /* ClusterWS-Client-Swift-iOS9.0.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ClusterWS-Client-Swift-iOS9.0/ClusterWS-Client-Swift-iOS9.0-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ClusterWS-Client-Swift-iOS9.0/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ClusterWS-Client-Swift-iOS9.0/ClusterWS-Client-Swift-iOS9.0.modulemap";
+				PRODUCT_NAME = ClusterWS_Client_Swift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1D42E4EA776D2C93958C3612B2C4BDDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EC5AC451A84C3C2CCDD94223238B4960 /* Pods-CWSChat.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CWSChat/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CWSChat/Pods-CWSChat.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CWSChat;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1FD53278F51C00214557EFEEFF057641 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF667310D7906AD3D765D1284F2B5E43 /* ClusterWS-Client-Swift-iOS9.0.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ClusterWS-Client-Swift-iOS9.0/ClusterWS-Client-Swift-iOS9.0-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ClusterWS-Client-Swift-iOS9.0/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ClusterWS-Client-Swift-iOS9.0/ClusterWS-Client-Swift-iOS9.0.modulemap";
+				PRODUCT_NAME = ClusterWS_Client_Swift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		67972480F63EFBB94C6B71DC03BBEE25 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57725AF78018456ABE1808EC75220DD7 /* ClusterWS-Client-Swift-iOS11.0.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ClusterWS-Client-Swift-iOS11.0/ClusterWS-Client-Swift-iOS11.0-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ClusterWS-Client-Swift-iOS11.0/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ClusterWS-Client-Swift-iOS11.0/ClusterWS-Client-Swift-iOS11.0.modulemap";
+				PRODUCT_NAME = ClusterWS_Client_Swift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6F9224530522DD3C735EC96CF142642E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		80947E2DC950858299A11544EAA582DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53254851242EBDBAC3B60B9C37CD931C /* Pods-CWSChat.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CWSChat/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CWSChat/Pods-CWSChat.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CWSChat;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		93922E204A8FE915912D39B417F295BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50FB7ED8EA5077D42E0C129CD43339DF /* Pods-CWSTests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CWSTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CWSTests/Pods-CWSTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CWSTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		946B6FC796B104B52EA37F8127B13D82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCA88B3325F3586A7D2298464ECFDF51 /* MessageKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MessageKit";
+				INFOPLIST_FILE = "Target Support Files/MessageKit/ResourceBundle-MessageKitAssets-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = MessageKitAssets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		99B00E0A02C9A40955BB07CAC93C51EA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 693EAFC91B3020E4E75F9BE07983B3CA /* Pods-CWSTests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-CWSTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-CWSTests/Pods-CWSTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_CWSTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B57951D085A1B98A97F8A1062A5E5C5B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		D4FFA0781276A0BEA6D333D9C4244F3F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCA88B3325F3586A7D2298464ECFDF51 /* MessageKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MessageKit";
+				INFOPLIST_FILE = "Target Support Files/MessageKit/ResourceBundle-MessageKitAssets-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PRODUCT_NAME = MessageKitAssets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		DB8999FED7571AF4DB45B4374C8A2BF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCA88B3325F3586A7D2298464ECFDF51 /* MessageKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MessageKit/MessageKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MessageKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MessageKit/MessageKit.modulemap";
+				PRODUCT_NAME = MessageKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E351A0F83F958C65977FE4715430BE87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCA88B3325F3586A7D2298464ECFDF51 /* MessageKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MessageKit/MessageKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MessageKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MessageKit/MessageKit.modulemap";
+				PRODUCT_NAME = MessageKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B57951D085A1B98A97F8A1062A5E5C5B /* Debug */,
+				6F9224530522DD3C735EC96CF142642E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5EB9644BB2997DCE5B0CFDFBF6A1D807 /* Build configuration list for PBXNativeTarget "MessageKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E351A0F83F958C65977FE4715430BE87 /* Debug */,
+				DB8999FED7571AF4DB45B4374C8A2BF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6AEE8CADC96ED42A1453D0170E63C9EC /* Build configuration list for PBXNativeTarget "MessageKit-MessageKitAssets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				946B6FC796B104B52EA37F8127B13D82 /* Debug */,
+				D4FFA0781276A0BEA6D333D9C4244F3F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91F17C6A91666ED0E02DB9E0E725A092 /* Build configuration list for PBXNativeTarget "Pods-CWSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99B00E0A02C9A40955BB07CAC93C51EA /* Debug */,
+				93922E204A8FE915912D39B417F295BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A59ABAFC4CAC57F17232DEBE8E6625CD /* Build configuration list for PBXNativeTarget "Pods-CWSChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80947E2DC950858299A11544EAA582DF /* Debug */,
+				1D42E4EA776D2C93958C3612B2C4BDDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B10B0680070BDEE4D87CF3BD1A7CD04E /* Build configuration list for PBXNativeTarget "ClusterWS-Client-Swift-iOS11.0" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67972480F63EFBB94C6B71DC03BBEE25 /* Debug */,
+				15D4101347884E32F69307FBAD2D3DA6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CFFF698C30BEEBD9DBA45A4FDECAE0BC /* Build configuration list for PBXNativeTarget "ClusterWS-Client-Swift-iOS9.0" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1FD53278F51C00214557EFEEFF057641 /* Debug */,
+				1802F7F0B503A656DDCD626EAFB5DF50 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

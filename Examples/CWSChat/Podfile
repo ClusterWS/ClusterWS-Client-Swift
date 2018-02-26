@@ -1,0 +1,20 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '8.0'
+
+target 'CWSChat' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for CWSChat
+  pod 'ClusterWS-Client-Swift', '~> 2.0'
+  pod 'MessageKit'
+
+end
+
+target 'CWSTests' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+  
+  # Pods for CWSTests
+  pod 'ClusterWS-Client-Swift', '~> 2.0'
+end
