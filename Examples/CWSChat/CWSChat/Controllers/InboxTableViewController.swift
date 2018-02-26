@@ -8,6 +8,7 @@
 
 import UIKit
 import ClusterWS_Client_Swift
+import UserNotifications
 
 protocol MessageProtocol: class {
     func didRecieveMessage()
@@ -17,10 +18,17 @@ class InboxTableViewController: UITableViewController {
     fileprivate var webSocket: ClusterWS?
     fileprivate var users = [User]()
     fileprivate var currentUser: User!
+    fileprivate var recentOpenUser: User?
+    
     weak var delegate: MessageProtocol?
+    fileprivate let center = UNUserNotificationCenter.current()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        center.requestAuthorization(options: [.alert, .badge, .sound]) { (_, _) in }
+        self.center.delegate = self
+        
         self.title = "Connected Users"
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -41,6 +49,10 @@ class InboxTableViewController: UITableViewController {
         self.currentUser = User(name: currentUserName, id: currentUserId)
         
         self.handlingEvents(for: self.currentUser)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.recentOpenUser = nil
     }
     
     fileprivate func handlingEvents(for user: User) {
@@ -75,6 +87,15 @@ class InboxTableViewController: UITableViewController {
                 let message = Message(text: messageText, user: newUser!)
                 newUser?.messages.append(message)
                 
+                // if chat is open with that user do not show notification
+                if let recentUser = self.recentOpenUser {
+                    if recentUser.id != newUser?.id {
+                        self.showNotification(userName: (newUser?.name)!, messageText: messageText)
+                    }
+                } else {
+                    self.showNotification(userName: (newUser?.name)!, messageText: messageText)
+                }
+                
                 // update view here
                 self.delegate?.didRecieveMessage()
             }
@@ -90,7 +111,6 @@ class InboxTableViewController: UITableViewController {
         
         _ = self.webSocket?.subscribe("global").publish(data: jsonString).watch(completion: { (data) in
             print("Global data: \(data)")
-            
             // converting json to dictionary
             var jsonDict: [String: Any]!
             if let dictionary = data as? [String: Any] {
@@ -124,6 +144,21 @@ class InboxTableViewController: UITableViewController {
             }
             self.tableView.reloadData()
         })
+    }
+    
+    fileprivate func showNotification(userName: String, messageText: String) {
+        let content = UNMutableNotificationContent()
+        
+        content.title = userName
+        content.body = messageText
+        content.sound = UNNotificationSound.default()
+        content.categoryIdentifier = "message"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1.0, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        center.add(request, withCompletionHandler: nil)
     }
     
     fileprivate func showAlert() {
@@ -178,6 +213,7 @@ extension InboxTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.recentOpenUser = self.users[indexPath.row]
         let conversationViewController = ConversationViewController()
         self.delegate = conversationViewController
         conversationViewController.user = self.users[indexPath.row]
@@ -244,4 +280,27 @@ extension InboxTableViewController {
         }
         return ""
     }
+}
+
+extension InboxTableViewController: UNUserNotificationCenterDelegate {
+    
+    //for displaying notification when app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
+    
+    // For handling tap and user actions
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        switch response.actionIdentifier {
+        case "action1":
+            print("Action First Tapped")
+        case "action2":
+            print("Action Second Tapped")
+        default:
+            break
+        }
+        completionHandler()
+    }
+    
 }
