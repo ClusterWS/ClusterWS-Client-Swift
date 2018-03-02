@@ -48,11 +48,11 @@ extension CWSReconnection {
         return self.mAutoReconnect
     }
     
-    open func setReconnection(autoReconnect: Bool, reconnectionIntervalMin: Double, reconnectionIntervalMax: Double, reconnectionAttempts: Int) {
+    open func setReconnection(autoReconnect: Bool, reconnectionIntervalMin: Double? = nil, reconnectionIntervalMax: Double? = nil, reconnectionAttempts: Int? = nil) {
         self.mAutoReconnect = autoReconnect
-        self.mReconnectionIntervalMin = reconnectionIntervalMin
-        self.mReconnectionIntervalMax = reconnectionIntervalMax
-        self.mReconnectionAttempts = reconnectionAttempts
+        self.mReconnectionIntervalMin = reconnectionIntervalMin ?? self.mReconnectionIntervalMin
+        self.mReconnectionIntervalMax = reconnectionIntervalMax ?? self.mReconnectionIntervalMax
+        self.mReconnectionAttempts = reconnectionAttempts ?? self.mReconnectionAttempts
     }
     
     open func reconnect() {

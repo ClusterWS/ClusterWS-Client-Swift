@@ -16,7 +16,7 @@ class ClusterWSTests: XCTestCase {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
         self.webSocket = ClusterWS(url: "wss://localhost:8080")
-        self.webSocket.setReconnection(autoReconnect: true, reconnectionIntervalMin: 1.0, reconnectionIntervalMax: 5.0, reconnectionAttempts: 2)
+        self.webSocket.setReconnection(autoReconnect: true)
     }
     
     override func tearDown() {

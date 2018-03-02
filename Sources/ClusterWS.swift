@@ -104,7 +104,7 @@ extension ClusterWS {
         self.mWebSocket?.close(closeCode == nil ? 1000 : closeCode!, reason: reason == nil ? "" : reason!)
     }
     
-    public func setReconnection(autoReconnect: Bool, reconnectionIntervalMin: Double, reconnectionIntervalMax: Double, reconnectionAttempts: Int) {
+    public func setReconnection(autoReconnect: Bool, reconnectionIntervalMin: Double? = nil, reconnectionIntervalMax: Double? = nil, reconnectionAttempts: Int? = nil) {
         self.mReconnection.setReconnection(autoReconnect: autoReconnect, reconnectionIntervalMin: reconnectionIntervalMin, reconnectionIntervalMax: reconnectionIntervalMax, reconnectionAttempts: reconnectionAttempts)
     }
     
