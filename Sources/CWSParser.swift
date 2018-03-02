@@ -111,8 +111,7 @@ extension CWSParser {
     
     private func handleP(with data: [Any]) {
         let channelName = String(describing: data[1])
-        let data = String(describing: data[2])
-        self.mSocket.getChannel(by: channelName)?.onMessage(data: data)
+        self.mSocket.getChannel(by: channelName)?.onMessage(data: data[2])
     }
     
     private func handleE(with data: [Any]) {

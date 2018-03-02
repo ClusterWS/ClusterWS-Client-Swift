@@ -27,7 +27,7 @@ class CWSChannelTests: XCTestCase {
     func testGetChannel() {
         self.webSocket.connect()
         let connectionExpectation = expectation(description: "connection expectation")
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { (timer) in
             if self.webSocket.getState() == .open {
                 connectionExpectation.fulfill()
                 timer.invalidate()
@@ -111,11 +111,11 @@ class CWSChannelTests: XCTestCase {
         let value = 0
         let currentDictionary = [key: value]
         _ = self.webSocket.subscribe(channelName).publish(data: currentDictionary).watch { (data) in
-            guard let recievedDictionaryString = data as? String else {
+            guard let recievedDictionary = data as? [String: Int] else {
                 return XCTFail()
             }
-            if !recievedDictionaryString.contains(key) && !recievedDictionaryString.contains(String(value)) {
-                return XCTFail()
+            if recievedDictionary != currentDictionary {
+                XCTFail()
             }
         }
     }
@@ -132,15 +132,15 @@ class CWSChannelTests: XCTestCase {
         wait(for: [connectionExpectation], timeout: 5.0)
 
         let channelName = "test channel"
-        let value1 = 30
+        let value1 = "30"
         let value2 = "test"
-        let currentArray = [value1, value2] as [Any]
+        let currentArray = [value1, value2] as [String]
         _ = self.webSocket.subscribe(channelName).publish(data: currentArray).watch { (data) in
-            guard let recievedArrayString = data as? String else {
+            guard let recievedArray = data as? [String] else {
                 return XCTFail()
             }
-            if !recievedArrayString.contains(String(value1)) && !recievedArrayString.contains(value2) {
-                return XCTFail()
+            if currentArray != recievedArray {
+                XCTFail()
             }
         }
     }
