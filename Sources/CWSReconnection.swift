@@ -8,8 +8,10 @@
 
 import Foundation
 
-// MARK: Properties & Initialization
 open class CWSReconnection {
+    
+    // MARK: - Properties
+    
     private var mReconnectionTimer: Timer?
     private var mAutoReconnect: Bool
     private var mReconnectionAttempts: Int
@@ -17,6 +19,8 @@ open class CWSReconnection {
     private var mReconnectionIntervalMax: Double // reconnection interval is in seconds
     private var mCurrentReconnectionAttempted: Int = 0
     private let mSocket: ClusterWS
+    
+    // MARK: - Initialization
     
     public init(socket: ClusterWS) {
         self.mSocket = socket
@@ -27,8 +31,10 @@ open class CWSReconnection {
     }
 }
 
-//MARK: Open methods
+// MARK: - Open methods
+
 extension CWSReconnection {
+    
     open func onConnected() {
         self.resetTimer()
         self.mReconnectionAttempts = 0
@@ -75,8 +81,10 @@ extension CWSReconnection {
     }
 }
 
-//MARK: Private methods
+// MARK: Private methods
+
 extension CWSReconnection {
+    
     private func resubscribe() {
         let channels = self.mSocket.getChannels()
         channels.forEach { _ = self.mSocket.subscribe($0.mChannelName) }

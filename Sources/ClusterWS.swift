@@ -7,17 +7,34 @@
 
 import Foundation
 
-// MARK: Properties & Initialization
 open class ClusterWS: NSObject {
+    
+    // MARK: - Properties
+    
     public var delegate: CWSDelegate?
+    
+    // MARK: - Internal
+    
+    private var mChannels: [CWSChannel] = []
+    private var mWebSocket: WebSocket?
+    
+    // MARK: - Dependencies
+    
     private let mEmitter: CWSEmitter
     private let mPingHandler: CWSPing
-    private var mChannels: [CWSChannel] = []
-    private var mUseBinary: Bool = false
-    private let mUrl: String
-    private var mWebSocket: WebSocket?
     private lazy var mReconnection = CWSReconnection(socket: self)
     private lazy var mParser = CWSParser(socket: self)
+    
+    // MARK: - Settings
+    
+    private var mPingInterval: TimeInterval?
+    private var mUseBinary: Bool = false
+    private let mUrl: String
+    private var mPingBinary: Data!
+    
+    // MARK: - Static
+    
+    static let mPingMessage: String = "A"
     
     public init(url: String) {
         self.mUrl = url
@@ -26,13 +43,22 @@ open class ClusterWS: NSObject {
     }
 }
 
-// MARK: Public methods
+// MARK: - Public methods
+
 extension ClusterWS {
+    
     public func connect() {
         guard let url = URL(string: self.mUrl) else {
-            self.delegate?.onError(error: CWSErrors.invalidURL(self.mUrl))
+            self.delegate?.onError(error: CWSError.invalidURL(self.mUrl))
             return
         }
+        
+        guard let binary = self.mParser.encode(message: ClusterWS.mPingMessage) else {
+            self.delegate?.onError(error: CWSError.binaryEncodeError(ClusterWS.mPingMessage))
+            return
+        }
+        
+        self.mPingBinary = binary
         
         self.mWebSocket = WebSocket(url: url)
         
@@ -61,21 +87,27 @@ extension ClusterWS {
         
         self.mWebSocket?.event.message = { message in
             var string: String = ""
+            if let binary = message as? [UInt8] {
+                if binary.first == 57 {
+                    self.mWebSocket?.send(data: self.mPingBinary)
+                    guard let interval =  self.mPingInterval else {
+                        self.delegate?.onError(error: CWSError.failedToCastPingTimer)
+                        return
+                    }
+                    self.resetPing(with: interval)
+                    return
+                } else {
+                    guard let decodedString = String(bytes: binary, encoding: .utf8) else {
+                        self.delegate?.onError(error: CWSError.binaryDecodeError(binary))
+                        return
+                    }
+                    string = decodedString
+                }
+            }
             if let text = message as? String {
                 string = text
-            } else if let binary = message as? [UInt8] {
-                guard let decodedString = String(bytes: binary, encoding: .utf8) else {
-                    self.delegate?.onError(error: CWSErrors.binaryDecodeError(binary))
-                    return
-                }
-                string = decodedString
             }
-            if string == "#0" {
-                self.mPingHandler.resetMissedPing()
-                self.send(event: "#1", data: nil, type: .ping)
-            } else {
-                self.mParser.handleMessage(with: string)
-            }
+            self.mParser.handleMessage(with: string)
         }
     }
     
@@ -120,20 +152,22 @@ extension ClusterWS {
     }
 }
 
-// MARK: Open methods
+// MARK: - Open methods
+
 extension ClusterWS {
     open func send(event: String, data: Any? = nil, type: MessageType) {
+        let customEncodedData = self.delegate?.encode(message: data)
         if self.mUseBinary {
             guard let encodedData = self.mParser.encode(event: event,
-                                                                      data: data,
+                                                                      data: customEncodedData ?? data,
                                                                       type: type)?.data(using: .utf8) else {
-                                                                        self.delegate?.onError(error: CWSErrors.JSONStringifyError(data))
+                                                                        self.delegate?.onError(error: CWSError.JSONStringifyError(data))
                                                                         return
             }
             self.mWebSocket?.send(encodedData)
         } else {
-            guard let anyData = self.mParser.encode(event: event, data: data, type: type) else {
-                self.delegate?.onError(error: CWSErrors.JSONStringifyError(data))
+            guard let anyData = self.mParser.encode(event: event, data: customEncodedData ?? data, type: type) else {
+                self.delegate?.onError(error: CWSError.JSONStringifyError(data))
                 return
             }
             self.mWebSocket?.send(anyData)
@@ -152,7 +186,12 @@ extension ClusterWS {
         self.mChannels = self.mChannels.filter { $0 != channel }
     }
     
-    open func startPinging(with interval: TimeInterval) {
-        self.mPingHandler.start(interval: interval, socket: self)
+    open func resetPing(with interval: TimeInterval) {
+        self.mPingHandler.restart(with: interval, socket: self)
+    }
+    
+    open func setPingInterval(_ interval: TimeInterval) {
+        self.mPingInterval = interval
+        self.resetPing(with: interval)
     }
 }

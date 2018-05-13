@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum CWSErrors: Error, LocalizedError {
+public enum CWSError: Error, LocalizedError {
     case invalidURL(String)
     case JSONStringConversionError(String)
     case JSONStringifyError(Any?)
@@ -17,6 +17,8 @@ public enum CWSErrors: Error, LocalizedError {
     case pingIntervalCastError(Any)
     case binaryCastError(Any)
     case binaryDecodeError(Any)
+    case binaryEncodeError(Any)
+    case failedToCastPingTimer
     public var localizedDescription: String {
         switch self {
         case .invalidURL(let url): return "Invalid URL: \(url)."
@@ -27,6 +29,8 @@ public enum CWSErrors: Error, LocalizedError {
         case .pingIntervalCastError(let json): return "Cannot cast ping interval as 'Double' from ping JSON, JSON: \(json)."
         case .binaryCastError(let json): return "Cannot cast ping binary as 'Bool' from ping JSON, JSON: \(json)."
         case .binaryDecodeError(let message): return "Cannot convert binary message to string using UTF8, message: \(message)"
+        case .binaryEncodeError(let ping): return "Cannot encode ping message to binary, ping message: \(ping)"
+         case .failedToCastPingTimer: return "Failed to get ping timer from settings, might be a server set up error"
         }
     }
 }

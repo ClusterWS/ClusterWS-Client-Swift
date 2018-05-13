@@ -11,7 +11,6 @@ public enum MessageType: String {
     case publish
     case emit
     case system
-    case ping
 }
 
 public enum SystemEventType: String {
@@ -27,8 +26,9 @@ public enum SystemEventType: String {
     }
 }
 
-// MARK: Properties & Initialization
+// MARK: - Properties & Initialization
 open class CWSParser {
+    
     private let mSocket: ClusterWS
     
     public init(socket: ClusterWS) {
@@ -36,8 +36,10 @@ open class CWSParser {
     }
 }
 
-//MARK: Open methods
+// MARK: - Open methods
+
 extension CWSParser {
+    
     open func encode(event: String, data: Any? = nil, type: MessageType) -> String? {
         var jsonDict: [String: Any]
         switch type {
@@ -52,19 +54,21 @@ extension CWSParser {
                 case .unsubscribe:
                     jsonDict = ["#": ["s", "u", data]]
             }
-        case .ping:
-            return event
         }
         return self.JSONStringify(value: jsonDict)
     }
     
+    open func encode(message: String) -> Data? {
+        return message.data(using: .utf8, allowLossyConversion: false)
+    }
+    
     open func handleMessage(with string: String) {
         guard let jsonDict = self.convertToJSON(text: string) else {
-            self.mSocket.delegate?.onError(error: CWSErrors.JSONStringConversionError(string))
+            self.mSocket.delegate?.onError(error: CWSError.JSONStringConversionError(string))
             return
         }
         guard let jsonArray = jsonDict["#"] as? [Any] else {
-            self.mSocket.delegate?.onError(error: CWSErrors.hashArrayCastError(jsonDict))
+            self.mSocket.delegate?.onError(error: CWSError.hashArrayCastError(jsonDict))
             return
         }
         switch String(describing: jsonArray[0]) {
@@ -80,8 +84,10 @@ extension CWSParser {
     }
 }
 
-//MARK: Private methods
+// MARK: - Private methods
+
 extension CWSParser {
+    
     private func convertToJSON(text: String) -> [String: Any]? {
         if let data = text.data(using: .utf8) {
             do {
@@ -111,31 +117,33 @@ extension CWSParser {
     
     private func handleP(with data: [Any]) {
         let channelName = String(describing: data[1])
-        self.mSocket.getChannel(by: channelName)?.onMessage(data: data[2])
+        let decodedMessage = self.mSocket.delegate?.decode(message: data[2]) ?? data[2]
+        self.mSocket.getChannel(by: channelName)?.onMessage(data: decodedMessage)
     }
     
     private func handleE(with data: [Any]) {
         let event = String(describing: data[1])
-        let data = data[2]
-        self.mSocket.emit(event: event, data: data)
+        let decodedMessage = self.mSocket.delegate?.decode(message: data[2]) ?? data[2]
+        self.mSocket.emit(event: event, data: decodedMessage)
     }
     
     private func handleS(with data: [Any]) {
         switch String(describing: data[1]) {
         case "c":
-            guard let pingJSON = data[2] as? [String: Any] else {
-                self.mSocket.delegate?.onError(error: CWSErrors.pingJSONCastError(data[2]))
+            let decodedMessage = self.mSocket.delegate?.decode(message: data[2]) ?? data[2]
+            guard let pingJSON = decodedMessage as? [String: Any] else {
+                self.mSocket.delegate?.onError(error: CWSError.pingJSONCastError(decodedMessage))
                 return
             }
             guard let pingInterval = pingJSON["ping"] as? Double else {
-                self.mSocket.delegate?.onError(error: CWSErrors.pingIntervalCastError(pingJSON))
+                self.mSocket.delegate?.onError(error: CWSError.pingIntervalCastError(pingJSON))
                 return
             }
             guard let binary = pingJSON["binary"] as? Bool else {
-                self.mSocket.delegate?.onError(error: CWSErrors.binaryCastError(pingJSON))
+                self.mSocket.delegate?.onError(error: CWSError.binaryCastError(pingJSON))
                 return
             }
-            self.mSocket.startPinging(with: pingInterval)
+            self.mSocket.setPingInterval(pingInterval * 2 + 100)
             self.mSocket.setBinary(to: binary)
             self.mSocket.delegate?.onConnect()
         default:

@@ -8,33 +8,25 @@
 
 import Foundation
 
-// MARK: Properties & Initialization
 open class CWSPing {
-    private var mMissedPing: Int = 0
+    
+    // MARK: - Properties
+    
     private var mPingTimer: Timer?
 }
 
-//MARK: Open methods
+// MARK: - Open methods
+
 extension CWSPing {
-    open func resetMissedPing() {
-        self.mMissedPing = 0
-    }
     
-    private func resetPingTimer() {
+    open func stop() {
         self.mPingTimer?.invalidate()
         self.mPingTimer = nil
     }
     
     @objc private func executionBlock(_ socket: ClusterWS) {
         func block(_ socket: ClusterWS) {
-            if self.mMissedPing < 3 {
-                self.mMissedPing += 1
-            } else {
-                if socket.getState() != .closed {
-                    socket.disconnect(closeCode: 4001, reason: "No pings")
-                    self.resetPingTimer()
-                }
-            }
+            socket.disconnect(closeCode: 4001, reason: "No pings")
         }
         
         guard let userInfoWS = self.mPingTimer?.userInfo as? ClusterWS else {
@@ -45,24 +37,20 @@ extension CWSPing {
         block(userInfoWS)
     }
     
-    open func stop() {
-        self.mMissedPing = 0
-        self.resetPingTimer()
-    }
-    
-    open func start(interval: TimeInterval, socket: ClusterWS) {
+    open func restart(with interval: TimeInterval, socket: ClusterWS) {
+        self.stop()
         if #available(iOS 10.0, *, OSX 10.12, tvOS 10.0, *) {
             self.mPingTimer = Timer.scheduledTimer(withTimeInterval: interval / 1000,
-                                                   repeats: true,
+                                                   repeats: false,
                                                    block: { (timer) in
                                                     self.executionBlock(socket)
             })
         } else {
-            self.mPingTimer = Timer(timeInterval: interval,
+            self.mPingTimer = Timer(timeInterval: interval / 1000,
                                     target: self,
                                     selector: #selector(executionBlock(_:)),
                                     userInfo: socket,
-                                    repeats: true)
+                                    repeats: false)
             self.mPingTimer?.fire()
         }
     }

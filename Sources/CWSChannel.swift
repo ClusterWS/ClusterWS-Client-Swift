@@ -8,8 +8,10 @@
 
 import Foundation
 
-// MARK: Properties & Initialization
 open class CWSChannel: Equatable {
+    
+    // MARK: - Properties
+    
     public static func ==(lhs: CWSChannel, rhs: CWSChannel) -> Bool {
         if lhs.mChannelName == rhs.mChannelName {
             return true
@@ -22,6 +24,8 @@ open class CWSChannel: Equatable {
     private var mCompletion: CompletionHandler?
     private let mSocket: ClusterWS
     
+    // MARK: - Init
+    
     public init(channelName: String, socket: ClusterWS) {
         self.mChannelName = channelName
         self.mSocket = socket
@@ -29,8 +33,10 @@ open class CWSChannel: Equatable {
     }
 }
 
-//MARK: Public methods
+// MARK: - Public
+
 extension CWSChannel {
+    
     public func watch(completion: @escaping CompletionHandler) -> CWSChannel {
         self.mCompletion = completion
         return self
@@ -47,8 +53,10 @@ extension CWSChannel {
     }
 }
 
-//MARK: Open methods
+// MARK: - Open methods
+
 extension CWSChannel {
+    
     open func onMessage(data: Any) {
         if let completion = self.mCompletion {
             completion(data)
@@ -56,8 +64,10 @@ extension CWSChannel {
     }
 }
 
-//MARK: Private methods
+// MARK: - Private methods
+
 extension CWSChannel {
+    
     private func subscribe() {
         self.mSocket.send(event: SystemEventType.subscribe.rawValue, data: self.mChannelName, type: .system)
     }

@@ -7,15 +7,15 @@
 //
 
 import XCTest
-import ClusterWS_Client_Swift
 
+@testable import ClusterWS
 class ClusterWSTests: XCTestCase {
     var webSocket: ClusterWS!
     
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        self.webSocket = ClusterWS(url: "wss://localhost:8080")
+        self.webSocket = ClusterWS(url: "ws://localhost:8080")
         self.webSocket.setReconnection(autoReconnect: true)
     }
     
