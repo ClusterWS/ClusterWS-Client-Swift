@@ -10,21 +10,21 @@ import Foundation
 /**
      ClusterWS delegate methods
 */
-public protocol CWSDelegate: class {
+@objc public protocol CWSDelegate {
     
     /// Called when socket is connected
     func onConnect()
     
     /// Called when socket disconnected
-    func onDisconnect(code: Int?, reason: String?)
+    func onDisconnect(code: Int, reason: String)
     
     /// Called on error
     /// - Parameter error: thrown error
     func onError(error: Error)
     
-    func decode(message: Any?) -> Any?
+    @objc optional func decode(message: Any?) -> Any?
     
-    func encode(message: Any?) -> Any?
+    @objc optional func encode(message: Any?) -> Any?
 }
 
 extension CWSDelegate {
