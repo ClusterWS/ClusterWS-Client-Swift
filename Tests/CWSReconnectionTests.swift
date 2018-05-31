@@ -9,12 +9,14 @@
 import XCTest
 import ClusterWS_Client_Swift
 
+//@testable import ClusterWS
 extension CWSReconnectionTests: CWSDelegate {
+    
     func onConnect() {
         print("Connected")
     }
     
-    func onDisconnect(code: Int?, reason: String?) {
+    func onDisconnect(code: Int, reason: String) {
         print("Disconnected")
         self.currentAttamts += 1
     }
@@ -45,12 +47,12 @@ class CWSReconnectionTests: XCTestCase {
     }
     
     private func initSocketWithWrongUrl() {
-        self.webSocket = ClusterWS(url: "wss://localhost:0000")
+        self.webSocket = ClusterWS(url: "ws://localhost:0000")
         self.webSocket.delegate = self
     }
     
     private func initSocketWithRightUrl() {
-        self.webSocket = ClusterWS(url: "wss://localhost:8080")
+        self.webSocket = ClusterWS(url: "ws://localhost:8080")
         self.webSocket.delegate = self
     }
     

@@ -26,16 +26,3 @@ import Foundation
     
     @objc optional func encode(message: Any?) -> Any?
 }
-
-extension CWSDelegate {
-    
-    /// Custom decode that user can implement
-    func decode(message: Any?) -> Any? {
-        return nil
-    }
-    
-    /// Custom encode that user can implement
-    func encode(message: Any?) -> Any? {
-        return nil
-    }
-}

@@ -117,20 +117,20 @@ extension CWSParser {
     
     private func handleP(with data: [Any]) {
         let channelName = String(describing: data[1])
-        let decodedMessage = self.mSocket.delegate?.decode(message: data[2]) ?? data[2]
+        let decodedMessage = self.mSocket.delegate?.decode?(message: data[2]) ?? data[2]
         self.mSocket.getChannel(by: channelName)?.onMessage(data: decodedMessage)
     }
     
     private func handleE(with data: [Any]) {
         let event = String(describing: data[1])
-        let decodedMessage = self.mSocket.delegate?.decode(message: data[2]) ?? data[2]
+        let decodedMessage = self.mSocket.delegate?.decode?(message: data[2]) ?? data[2]
         self.mSocket.emit(event: event, data: decodedMessage)
     }
     
     private func handleS(with data: [Any]) {
         switch String(describing: data[1]) {
         case "c":
-            let decodedMessage = self.mSocket.delegate?.decode(message: data[2]) ?? data[2]
+            let decodedMessage = self.mSocket.delegate?.decode?(message: data[2]) ?? data[2]
             guard let pingJSON = decodedMessage as? [String: Any] else {
                 self.mSocket.delegate?.onError(error: CWSError.pingJSONCastError(decodedMessage))
                 return

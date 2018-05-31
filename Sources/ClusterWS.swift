@@ -156,17 +156,17 @@ extension ClusterWS {
 
 extension ClusterWS {
     open func send(event: String, data: Any? = nil, type: MessageType) {
-        let customEncodedData = self.delegate?.encode(message: data)
+        let customEncodedData = self.delegate?.encode?(message: data) ?? data
         if self.mUseBinary {
             guard let encodedData = self.mParser.encode(event: event,
-                                                                      data: customEncodedData ?? data,
+                                                                      data: customEncodedData,
                                                                       type: type)?.data(using: .utf8) else {
                                                                         self.delegate?.onError(error: CWSError.JSONStringifyError(data))
                                                                         return
             }
             self.mWebSocket?.send(encodedData)
         } else {
-            guard let anyData = self.mParser.encode(event: event, data: customEncodedData ?? data, type: type) else {
+            guard let anyData = self.mParser.encode(event: event, data: customEncodedData, type: type) else {
                 self.delegate?.onError(error: CWSError.JSONStringifyError(data))
                 return
             }

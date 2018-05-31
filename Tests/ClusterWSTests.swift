@@ -7,8 +7,9 @@
 //
 
 import XCTest
+import ClusterWS_Client_Swift
 
-@testable import ClusterWS
+//@testable import ClusterWS
 class ClusterWSTests: XCTestCase {
     var webSocket: ClusterWS!
     
