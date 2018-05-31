@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'ClusterWS-Client-Swift'
-  s.version          = '3.0.1'
+  s.version          = '3.0.2'
   s.summary          = 'Swift Client for ClusterWS'
   s.description      = 'Swift Client for ClusterWS - lightweight, fast and powerful framework for building horizontally & vertically scalable WebSocket applications in Node.js'
   s.homepage         = 'https://github.com/ClusterWS/ClusterWS-Client-Swift'
