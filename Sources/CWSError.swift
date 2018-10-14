@@ -28,9 +28,9 @@ public enum CWSError: Error, LocalizedError {
         case .pingJSONCastError(let array): return "Cannot cast array object to JSON with ping values, array object: \(array)."
         case .pingIntervalCastError(let json): return "Cannot cast ping interval as 'Double' from ping JSON, JSON: \(json)."
         case .binaryCastError(let json): return "Cannot cast ping binary as 'Bool' from ping JSON, JSON: \(json)."
-        case .binaryDecodeError(let message): return "Cannot convert binary message to string using UTF8, message: \(message)"
-        case .binaryEncodeError(let ping): return "Cannot encode ping message to binary, ping message: \(ping)"
-         case .failedToCastPingTimer: return "Failed to get ping timer from settings, might be a server set up error"
+        case .binaryDecodeError(let message): return "Cannot convert binary message to string using UTF8, message: \(message)."
+        case .binaryEncodeError(let ping): return "Cannot encode ping message to binary, ping message: \(ping)."
+         case .failedToCastPingTimer: return "Failed to get ping timer from settings, might be a server set up error."
         }
     }
 }
