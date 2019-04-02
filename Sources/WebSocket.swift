@@ -600,7 +600,9 @@ private class InnerWebSocket: Hashable {
         return ws
     }
 
-    var hashValue: Int { return id }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+    }
 
     init(request: URLRequest, subProtocols : [String] = [], stub : Bool = false){
         pthread_mutex_init(&mutex, nil)
@@ -1143,7 +1145,7 @@ private class InnerWebSocket: Hashable {
                     value = trim(line)
                 } else {
                     key = ""
-                    if let r = line.index(of: ":") {
+                    if let r = line.firstIndex(of: ":") {
                         key = trim(String(line[..<r]))
                         value = trim(String(line[r...]))
                     }

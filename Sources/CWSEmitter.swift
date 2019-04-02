@@ -19,13 +19,13 @@ open class CWSEmitter {
     }
 
     public func emit(event: String, data: Any) {
-        if let index = self.mEvents.index(where: { $0.0 == event }) {
+        if let index = self.mEvents.firstIndex(where: { $0.0 == event }) {
             self.mEvents[index].completion(data)
         }
     }
 
     public func remove(event: String) {
-        if let index = self.mEvents.index(where: { $0.0 == event }) {
+        if let index = self.mEvents.firstIndex(where: { $0.0 == event }) {
             self.mEvents.remove(at: index)
         }
     }
